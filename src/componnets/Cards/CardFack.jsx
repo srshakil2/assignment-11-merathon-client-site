@@ -26,7 +26,7 @@ const CardFack = ({ data }) => {
         <p className="text-sm text-gray-500">Time: {time}</p>
         <p className="text-sm text-gray-500">Categories: {category}</p>
         <div className="card-actions justify-end">
-          <Link className="btn bg-orange-400">Details</Link>
+          <Link className="btn bg-orange-400">See Details</Link>
         </div>
       </div>
     </div>
