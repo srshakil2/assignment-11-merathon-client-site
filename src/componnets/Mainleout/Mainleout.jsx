@@ -1,13 +1,30 @@
 import React from "react";
 import Homebanner from "../Banner/Homebanner";
+import Fakecard from "../Cards/Fakecard";
 
 const Mainleout = () => {
+  const bgimage = {};
   return (
     <div className="">
-      <div>
-        <Homebanner></Homebanner>
+      <div className=" relative ">
+        <div>
+          <Homebanner></Homebanner>
+        </div>
+        {/* down Marathon Category */}
+        <div className="flex items-center gap-2 absolute md:right-10 md:bottom-6 lg:bottom-10 lg:right-10">
+          <p className="text-lg font-bold">Marathon Category</p>
+          <div className="w-10">
+            <button>
+              <img
+                src="https://img.icons8.com/?size=48&id=XZh4vkhZnXtg&format=png"
+                alt=""
+              />
+            </button>
+          </div>
+        </div>
       </div>
-      <div className=" w-9/12 mx-auto mt-10 grid grid-cols-3">
+      {/* animation */}
+      <div className="bg-bg bg-repeat-round text-orange-500 w-9/12 p-5 mx-auto mt-10 mb-5 md:grid lg:grid grid-cols-3">
         <div className=" col-span-2">
           <p className="text-4xl font-bold">Starts Mileblast Marathon 2025</p>
           <div>{/* aikhane animation korte hobe */}</div>
@@ -34,6 +51,20 @@ const Mainleout = () => {
             <p className="text-lg font-semibold">Dhaka , Bangladesh</p>
           </div>
         </div>
+      </div>
+      {/* peragrap */}
+      <div className="text-center w-10/12 mx-auto mt-10">
+        <p className=" font-semibold">Tickets</p>
+        <h2 className="text-3xl font-bold">Buy Your Early Bird Ticket Now!</h2>
+        <p className="text-lg font-semibold">
+          Take advantage of our early bird pricing and save on your marathon
+          ticket! Enjoy the benefits of registering early while guaranteeing
+          your participation.
+        </p>
+      </div>
+      {/* Fakecard */}
+      <div className="mt-20">
+        <Fakecard></Fakecard>
       </div>
     </div>
   );

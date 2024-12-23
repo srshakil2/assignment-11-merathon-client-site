@@ -2,7 +2,11 @@
 export default {
   content: ["./index.html", "./src/**/*.{js,ts,jsx,tsx}"],
   theme: {
-    extend: {},
+    extend: {
+      backgroundImage: {
+        bg: "url('https://i.ibb.co.com/T8VDkxS/bg-banner.jpg')",
+      },
+    },
   },
   plugins: [require("daisyui")],
 };
