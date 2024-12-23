@@ -6,7 +6,7 @@ import Footer from "./Footer";
 
 const Home = () => {
   const { name } = useContext(MyMainContext);
-  console.log(name);
+
   return (
     <div className="relative ">
       {/* <div className="w-20">

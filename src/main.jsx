@@ -7,6 +7,8 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Home from "./componnets/Home";
 import AuthProvider from "./AuthProvider/AuthProvider";
 import Mainleout from "./componnets/Mainleout/Mainleout";
+import Login from "./componnets/From/Login";
+import SingUp from "./componnets/From/SingUp";
 
 //
 const router = createBrowserRouter([
@@ -17,6 +19,14 @@ const router = createBrowserRouter([
       {
         path: "/",
         element: <Mainleout></Mainleout>,
+      },
+      {
+        path: "/singup",
+        element: <SingUp></SingUp>,
+      },
+      {
+        path: "/login",
+        element: <Login></Login>,
       },
     ],
   },

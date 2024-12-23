@@ -1,9 +1,9 @@
 import React from "react";
 import Homebanner from "../Banner/Homebanner";
 import Fakecard from "../Cards/Fakecard";
+import { NavLink } from "react-router-dom";
 
 const Mainleout = () => {
-  const bgimage = {};
   return (
     <div className="">
       <div className=" relative ">
@@ -52,15 +52,24 @@ const Mainleout = () => {
           </div>
         </div>
       </div>
-      {/* peragrap */}
+      {/* peragrap and btn create now */}
       <div className="text-center w-10/12 mx-auto mt-10">
-        <p className=" font-semibold">Tickets</p>
-        <h2 className="text-3xl font-bold">Buy Your Early Bird Ticket Now!</h2>
+        <p className=" font-semibold">Create !</p>
+        <h2 className="text-3xl font-bold">Buy Your Early Bird Create Now!</h2>
         <p className="text-lg font-semibold">
           Take advantage of our early bird pricing and save on your marathon
-          ticket! Enjoy the benefits of registering early while guaranteeing
+          Create! Enjoy the benefits of registering early while guaranteeing
           your participation.
         </p>
+        {/* btn Create now */}
+        <div className="mt-5">
+          <NavLink className="btn bg-orange-400">CREATE NOW</NavLink>
+        </div>
+      </div>
+      {/* user upcoming card */}
+      <div className="">
+        <h2 className=" text-5xl font-bold">Upcoming Marathons....</h2>
+        <div className=" p-10">{/* mongo DB card */}</div>
       </div>
       {/* Fakecard */}
       <div className="mt-20">

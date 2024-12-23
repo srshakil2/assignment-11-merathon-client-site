@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { MyMainContext } from "../AuthProvider/AuthProvider";
 
 const Navber = () => {
+  const { handelLogOut } = useContext(MyMainContext);
+  const { user } = useContext(MyMainContext);
   return (
     <div className="navbar bg-orange-200 px-10">
       <div className="navbar-start">
@@ -104,7 +107,34 @@ const Navber = () => {
       </div>
       {/* btn profile */}
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        {user ? (
+          <div className=" flex justify-center items-center">
+            <div className=" flex justify-center items-center gap-3">
+              {/* <p className=" hidden md:flex text-lg font-semibold">
+                {user?.displayName}
+              </p> */}
+              <img
+                className="w-16 h-16 rounded-full"
+                referrerpolicy="no-referrer"
+                src={user?.photoURL}
+                alt=""
+              />
+            </div>
+            <button
+              onClick={handelLogOut}
+              className="btn bg-yellow-300 text-black font-semibold ml-3"
+            >
+              LogOut
+            </button>
+          </div>
+        ) : (
+          <NavLink
+            to={"/login"}
+            className={"btn text-black text-lg bg-yellow-300"}
+          >
+            Login now
+          </NavLink>
+        )}
       </div>
     </div>
   );

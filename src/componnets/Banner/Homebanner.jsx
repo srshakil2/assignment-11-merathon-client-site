@@ -1,4 +1,5 @@
 import React from "react";
+import { NavLink } from "react-router-dom";
 
 const Homebanner = () => {
   return (
@@ -11,12 +12,8 @@ const Homebanner = () => {
             className="w-full"
           />
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-            <a href="#slide3" className="btn btn-circle bg-orange-400">
-              ❮
-            </a>
-            <a href="#slide2" className="btn btn-circle bg-orange-400">
-              ❯
-            </a>
+            <a href="#slide3" className=""></a>
+            <a href="#slide2" className=""></a>
           </div>
         </div>
         <div id="slide2" className="carousel-item relative w-full">
@@ -25,12 +22,8 @@ const Homebanner = () => {
             className="w-full"
           />
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-            <a href="#slide1" className="btn btn-circle bg-orange-400">
-              ❮
-            </a>
-            <a href="#slide3" className="btn btn-circle bg-orange-400">
-              ❯
-            </a>
+            <a href="#slide1" className=""></a>
+            <a href="#slide3" className=""></a>
           </div>
         </div>
         <div id="slide3" className="carousel-item relative w-full">
@@ -39,12 +32,8 @@ const Homebanner = () => {
             className="w-full"
           />
           <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-            <a href="#slide2" className="btn btn-circle bg-orange-400">
-              ❮
-            </a>
-            <a href="#slide1" className="btn btn-circle bg-orange-400">
-              ❯
-            </a>
+            <a href="#slide2" className=""></a>
+            <a href="#slide1" className=""></a>
           </div>
         </div>
       </div>
@@ -63,9 +52,9 @@ const Homebanner = () => {
           Mileblast Marathon 2025 is more than just a test of endurance <br />
           —it’s a celebration of human determination and resilience.
         </p>
-        {/* singup btn */}
+        {/* create now btn */}
         <div>
-          <button className="btn bg-orange-300 text-xl">REGISTER NOW !</button>
+          <NavLink className="btn bg-orange-400 text-xl">CREATE NOW !</NavLink>
         </div>
       </div>
     </div>
