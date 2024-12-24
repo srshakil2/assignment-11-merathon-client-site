@@ -4,6 +4,7 @@ import { FaEye, FaEyeSlash } from "react-icons/fa";
 import { NavLink, useNavigate } from "react-router-dom";
 import { MyMainContext } from "../../AuthProvider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
+import axios from "axios";
 
 const Login = () => {
   const [passwordShow, setPasswordShow] = useState(false);
@@ -13,7 +14,22 @@ const Login = () => {
 
   const handelGoogle = () => {
     handelGoogleLogIn().then((res) => {
-      navigate("/");
+      const { displayName, email, photoURL } = res.user;
+      console.log(displayName, email, photoURL);
+
+      axios
+        .post("http://localhost:3000/user", {
+          name: displayName,
+          photoUrl: photoURL,
+          email: email,
+        })
+        .then((res) => {
+          console.log(res.data);
+
+          // toast.success("soccessfully create accunt");
+          navigate("/");
+        })
+        .catch((err) => console.log(err));
     });
   };
 

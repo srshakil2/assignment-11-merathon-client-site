@@ -5,6 +5,7 @@ import { updateProfile } from "firebase/auth";
 import { Helmet } from "react-helmet";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import auth from "../../AuthProvider/firebase";
+import axios from "axios";
 
 const SingUp = () => {
   const [passwordShow, setPasswordShow] = useState(false);
@@ -31,8 +32,19 @@ const SingUp = () => {
           displayName: name,
           photoURL: photoUrl,
         }).then(() => {
-          // toast.success("soccessfully create accunt");
-          navigate("/");
+          axios
+            .post("http://localhost:3000/user", {
+              name,
+              photoUrl,
+              email,
+            })
+            .then((res) => {
+              console.log(res.data);
+
+              // toast.success("soccessfully create accunt");
+              navigate("/");
+            })
+            .catch((err) => console.log(err));
         });
       })
       .catch((error) => setErrors(error.message));

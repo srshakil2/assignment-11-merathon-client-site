@@ -72,7 +72,7 @@ const Mainleout = () => {
         <div className=" p-10">{/* mongo DB card */}</div>
       </div>
       {/* Fakecard */}
-      <div className="mt-20">
+      <div className="mt-10">
         <Fakecard></Fakecard>
       </div>
     </div>
