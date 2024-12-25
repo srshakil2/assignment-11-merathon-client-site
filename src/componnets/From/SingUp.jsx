@@ -42,7 +42,7 @@ const SingUp = () => {
               console.log(res.data);
 
               // toast.success("soccessfully create accunt");
-              navigate("/");
+              navigate("/marathons");
             })
             .catch((err) => console.log(err));
         });

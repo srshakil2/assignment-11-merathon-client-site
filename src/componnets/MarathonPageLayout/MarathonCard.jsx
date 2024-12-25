@@ -1,8 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FaCalendarAlt, FaLocationArrow, FaRunning } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import { MyMainContext } from "../../AuthProvider/AuthProvider";
+import axios from "axios";
 
 const MarathonCard = ({ item }) => {
+  const navigate = useNavigate();
+  const { user, setDataId } = useContext(MyMainContext);
+  const userEmail = user?.email;
   const {
     _id,
     email,
@@ -17,6 +22,20 @@ const MarathonCard = ({ item }) => {
     created_at,
     total_registration_count,
   } = item || {};
+  const handelSeeDetails = (_id) => {
+    // send data server site
+    setDataId(_id);
+
+    // axios
+    //   .put(`http://localhost:3000/data/${_id}`, { userEmail })
+    //   .then((res) => {
+    //     // console.log(res.data);
+    //   })
+    //   .catch((err) => {
+    //     // console.log(err)
+    //   });
+  };
+
   return (
     <div>
       {/* card mongoDB */}
@@ -65,9 +84,13 @@ const MarathonCard = ({ item }) => {
                 {total_registration_count} participants
               </span>
             </div>
-            {/* Footer Section */}
+            {/* Footer Section btn see details */}
             <div className=" dark:bg-gray-900 p-4 rounded-b-lg">
-              <Link className="w-full inline-block bg-orange-400 text-white text-center py-2 rounded-lg hover:bg-orange-500 ">
+              <Link
+                onClick={() => handelSeeDetails(_id)}
+                to={`/marathons/${_id}`}
+                className="w-full inline-block bg-orange-400 text-white text-center py-2 rounded-lg hover:bg-orange-500 "
+              >
                 See Details
               </Link>
             </div>
