@@ -9,6 +9,7 @@ import AuthProvider from "./AuthProvider/AuthProvider";
 import Mainleout from "./componnets/Mainleout/Mainleout";
 import Login from "./componnets/From/Login";
 import SingUp from "./componnets/From/SingUp";
+import MarathonPage from "./componnets/MarathonPageLayout/MarathonPage";
 
 //
 const router = createBrowserRouter([
@@ -27,6 +28,11 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        // privet
+        path: "/marathons",
+        element: <MarathonPage></MarathonPage>,
       },
     ],
   },

@@ -24,12 +24,11 @@ const Login = () => {
           email: email,
         })
         .then((res) => {
-          console.log(res.data);
-
+          // console.log(res.data);
           // toast.success("soccessfully create accunt");
-          navigate("/");
         })
         .catch((err) => console.log(err));
+      navigate("/");
     });
   };
 

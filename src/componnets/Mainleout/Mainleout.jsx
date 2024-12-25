@@ -1,9 +1,11 @@
-import React from "react";
+// import React, { useContext } from "react";
 import Homebanner from "../Banner/Homebanner";
 import Fakecard from "../Cards/Fakecard";
 import { NavLink } from "react-router-dom";
+// import { MyMainContext } from "../../AuthProvider/AuthProvider";
 
 const Mainleout = () => {
+  // const {user}=useContext(MyMainContext)
   return (
     <div className="">
       <div className=" relative ">

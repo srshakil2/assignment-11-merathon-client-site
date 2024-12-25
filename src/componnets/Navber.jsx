@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import { MyMainContext } from "../AuthProvider/AuthProvider";
 
 const Navber = () => {
@@ -78,13 +78,13 @@ const Navber = () => {
           </NavLink>
           <li className="text-lg font-semibold">
             <details>
-              <summary className="">PAGES</summary>
-              <ul className="z-20 p-2">
-                <li>
-                  <a>Submenu 1</a>
+              <summary className=" ">PAGES</summary>
+              <ul className="z-20 p-2 ">
+                <li className="">
+                  <Link to={"/marathons"}>Marathon Page</Link>
                 </li>
                 <li>
-                  <a>Submenu 2</a>
+                  <Link>Submenu 2</Link>
                 </li>
               </ul>
             </details>
