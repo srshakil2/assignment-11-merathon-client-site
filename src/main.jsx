@@ -12,6 +12,7 @@ import SingUp from "./componnets/From/SingUp";
 import MarathonPage from "./componnets/MarathonPageLayout/MarathonPage";
 import Details from "./componnets/MarathonDetails/Details";
 import Register from "./componnets/From/Register";
+import MyApply from "./componnets/MarathonDetails/MyApply";
 
 //
 const router = createBrowserRouter([
@@ -45,6 +46,11 @@ const router = createBrowserRouter([
         // privet
         path: "/marathons/register/:id",
         element: <Register></Register>,
+      },
+      {
+        // privet
+        path: "/marathons/myApply",
+        element: <MyApply></MyApply>,
       },
     ],
   },

@@ -3,9 +3,11 @@ import { MyMainContext } from "../../AuthProvider/AuthProvider";
 import axios from "axios";
 import { format } from "date-fns";
 import DatePicker from "react-datepicker";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
+import Swal from "sweetalert2";
 
 const Register = () => {
+  const navigate = useNavigate();
   const [data, setData] = useState();
   const { user, dataId } = useContext(MyMainContext);
   const user_email = user?.email;
@@ -17,9 +19,9 @@ const Register = () => {
         setData(res?.data);
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
-  }, []);
+  }, [data]);
   const {
     _id,
     email,
@@ -40,6 +42,22 @@ const Register = () => {
     const email = form.email.value;
     const marathon_titel = form.titel.value;
     const register_date = format(new Date(), "MM/dd/yyyy");
+    const end_date = format(new Date(end_registration_date), "MM/dd/yyyy");
+    // compear date
+    const userDate = new Date(register_date);
+    const endDate = new Date(end_date);
+    // console.log(userDate, endDate);
+    if (userDate.getTime() < endDate.getTime()) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "The Date is Expeair!",
+        footer: '<a href="#">Why do I have this issue?</a>',
+      });
+      return;
+    }
+    //
+    console.log(register_date, "kjhjkg", end_date);
     const firstName = form.first_name.value;
     const lastName = form.last_name.value;
     const contact = form.contact.value;
@@ -53,33 +71,45 @@ const Register = () => {
     //   info,
     //   register_date,
     // };
-    axios
-      .post("http://localhost:3000/participer", {
-        email,
-        marathon_titel,
-        firstName,
-        lastName,
-        contact,
-        info,
-        register_date,
-      })
-      .then((res) => {
-        // update tha total count
-        axios
-          .post(`http://localhost:3000/data/${_id}`, {
-            email,
-            _id,
-          })
-          .then((res) => {
-            console.log("okkkkkkkkkk");
-            // form.reset();
-          })
-          .catch((err) => console.log(err));
-      })
-      .catch((err) => {
-        console.log(err);
+    if (!data?.register_email || user?.email !== data?.register_email) {
+      axios
+        .post("http://localhost:3000/participer", {
+          email,
+          marathon_titel,
+          firstName,
+          lastName,
+          contact,
+          info,
+          register_date,
+        })
+        .then((res) => {
+          // update tha total count
+          axios
+            .post(`http://localhost:3000/data/${_id}`, {
+              email,
+              _id,
+            })
+            .then((res) => {
+              Swal.fire("Register!", "", "success");
+              form.reset();
+              navigate("/marathons/myApply");
+            })
+            .catch((err) => {
+              // console.log(err)
+            });
+        })
+        .catch((err) => {
+          // console.log(err);
+        });
+    } else {
+      Swal.fire({
+        icon: "error",
+        title: "You Have Allrady axsist...",
+        text: "pleas wate next year this marathon!",
+        footer: '<a href="#">Why do I have this issue?</a>',
       });
-    console.log(register_date);
+    }
+    // console.log(register_date);
     // send data to server
   };
   return (
