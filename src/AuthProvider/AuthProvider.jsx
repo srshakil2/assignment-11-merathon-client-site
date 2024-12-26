@@ -13,7 +13,7 @@ export const MyMainContext = createContext();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loding, setLoding] = useState(true);
-  const [dataId, setDataId] = useState("");
+  // const [dataId, setDataId] = useState("");
 
   const singUphandel = (email, password) => {
     setLoding(true);
@@ -59,8 +59,8 @@ const AuthProvider = ({ children }) => {
   //
   // provider object
   const data = {
-    dataId,
-    setDataId,
+    // dataId,
+    // setDataId,
     loding,
     setLoding,
     user,

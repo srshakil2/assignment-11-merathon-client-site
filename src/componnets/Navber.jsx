@@ -115,7 +115,7 @@ const Navber = () => {
               </p> */}
               <img
                 className="w-16 h-16 rounded-full"
-                referrerpolicy="no-referrer"
+                referrerPolicy="no-referrer"
                 src={user?.photoURL}
                 alt=""
               />

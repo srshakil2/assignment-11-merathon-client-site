@@ -22,19 +22,20 @@ const MarathonCard = ({ item }) => {
     created_at,
     total_registration_count,
   } = item || {};
-  const handelSeeDetails = (_id) => {
-    // send data server site
-    setDataId(_id);
+  // const handelSeeDetails = (_id) => {
+  //   // send data server site
 
-    // axios
-    //   .put(`http://localhost:3000/data/${_id}`, { userEmail })
-    //   .then((res) => {
-    //     // console.log(res.data);
-    //   })
-    //   .catch((err) => {
-    //     // console.log(err)
-    //   });
-  };
+  //   // akhan thake ami _id ta auth e state e set kotechi jekarone ami page reloard dile data hariye jacche porer onksogulate akhane solve korte hobbe...
+
+  //   // axios
+  //   //   .put(`http://localhost:3000/data/${_id}`, { userEmail })
+  //   //   .then((res) => {
+  //   //     // console.log(res.data);
+  //   //   })
+  //   //   .catch((err) => {
+  //   //     // console.log(err)
+  //   //   });
+  // };
 
   return (
     <div>
@@ -87,7 +88,7 @@ const MarathonCard = ({ item }) => {
             {/* Footer Section btn see details */}
             <div className=" dark:bg-gray-900 p-4 rounded-b-lg">
               <Link
-                onClick={() => handelSeeDetails(_id)}
+                // onClick={() => handelSeeDetails(_id)}
                 to={`/marathons/${_id}`}
                 className="w-full inline-block bg-orange-400 text-white text-center py-2 rounded-lg hover:bg-orange-500 "
               >

@@ -1,19 +1,21 @@
 import React, { useContext, useEffect, useState } from "react";
-import { MyMainContext } from "../../AuthProvider/AuthProvider";
+// import { MyMainContext } from "../../AuthProvider/AuthProvider";
 import axios from "axios";
 import DatePicker from "react-datepicker";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { format } from "date-fns";
 
 const Details = () => {
+  const { id } = useParams();
+  // console.log(id);
   const [marathon, setMarathon] = useState({});
-  const { dataId, setDataId } = useContext(MyMainContext);
+  // const { dataId, setDataId } = useContext(MyMainContext);
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/data/${dataId}`)
+      .get(`http://localhost:3000/data/${id}`)
       .then((res) => setMarathon({ ...res?.data }))
       .catch((err) => console.log(err));
-  }, [dataId]);
+  }, []);
   const {
     _id,
     marathon_title,

@@ -3,15 +3,16 @@ import { MyMainContext } from "../../AuthProvider/AuthProvider";
 import axios from "axios";
 import { format } from "date-fns";
 import DatePicker from "react-datepicker";
+import { useParams } from "react-router-dom";
 
 const Register = () => {
   const [data, setData] = useState();
   const { user, dataId } = useContext(MyMainContext);
   const user_email = user?.email;
-
+  const { id } = useParams();
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/data/${dataId}`)
+      .get(`http://localhost:3000/data/${id}`)
       .then((res) => {
         setData(res?.data);
       })
@@ -38,20 +39,20 @@ const Register = () => {
     const form = event.target;
     const email = form.email.value;
     const marathon_titel = form.titel.value;
-    const register_date = format(new Date(), "mm/dd/yyyy");
+    const register_date = format(new Date(), "MM/dd/yyyy");
     const firstName = form.first_name.value;
     const lastName = form.last_name.value;
     const contact = form.contact.value;
     const info = form.info.value;
-    const particpent = {
-      email,
-      marathon_titel,
-      firstName,
-      lastName,
-      contact,
-      info,
-      register_date,
-    };
+    // const particpent = {
+    //   email,
+    //   marathon_titel,
+    //   firstName,
+    //   lastName,
+    //   contact,
+    //   info,
+    //   register_date,
+    // };
     axios
       .post("http://localhost:3000/participer", {
         email,
@@ -63,12 +64,22 @@ const Register = () => {
         register_date,
       })
       .then((res) => {
-        console.log(res.data);
+        // update tha total count
+        axios
+          .post(`http://localhost:3000/data/${_id}`, {
+            email,
+            _id,
+          })
+          .then((res) => {
+            console.log("okkkkkkkkkk");
+            // form.reset();
+          })
+          .catch((err) => console.log(err));
       })
       .catch((err) => {
         console.log(err);
       });
-    // console.log(particpent);
+    console.log(register_date);
     // send data to server
   };
   return (
@@ -132,6 +143,7 @@ const Register = () => {
             name="first_name"
             placeholder="Enter Your First Name"
             className="input input-bordered"
+            required
           />
         </div>
         {/* last name */}
@@ -144,6 +156,7 @@ const Register = () => {
             name="last_name"
             placeholder="Enter Your Last Name"
             className="input input-bordered"
+            required
           />
         </div>
         {/* contact number */}
@@ -156,6 +169,7 @@ const Register = () => {
             name="contact"
             placeholder="Enter Your Contact Number"
             className="input input-bordered"
+            required
           />
         </div>
         {/* info */}
@@ -169,6 +183,7 @@ const Register = () => {
             className="textarea textarea-bordered"
             placeholder="Enter Info"
             name="info"
+            required
           ></textarea>
         </div>
         {/* btn */}
