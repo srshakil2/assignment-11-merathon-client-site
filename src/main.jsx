@@ -11,6 +11,7 @@ import Login from "./componnets/From/Login";
 import SingUp from "./componnets/From/SingUp";
 import MarathonPage from "./componnets/MarathonPageLayout/MarathonPage";
 import Details from "./componnets/MarathonDetails/Details";
+import Register from "./componnets/From/Register";
 
 //
 const router = createBrowserRouter([
@@ -39,6 +40,11 @@ const router = createBrowserRouter([
         // privet
         path: "/marathons/:id",
         element: <Details></Details>,
+      },
+      {
+        // privet
+        path: "/marathons/register/:id",
+        element: <Register></Register>,
       },
     ],
   },
