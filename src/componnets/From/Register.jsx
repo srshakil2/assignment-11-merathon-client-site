@@ -47,7 +47,7 @@ const Register = () => {
     const userDate = new Date(register_date);
     const endDate = new Date(end_date);
     // console.log(userDate, endDate);
-    if (userDate.getTime() < endDate.getTime()) {
+    if (userDate.getTime() > endDate.getTime()) {
       Swal.fire({
         icon: "error",
         title: "Oops...",
