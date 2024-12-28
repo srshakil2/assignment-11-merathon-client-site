@@ -8,7 +8,7 @@ import Swal from "sweetalert2";
 
 const Register = () => {
   const navigate = useNavigate();
-  const [data, setData] = useState();
+  const [data, setData] = useState([]);
   const { user, dataId } = useContext(MyMainContext);
   const user_email = user?.email;
   const { id } = useParams();
@@ -21,7 +21,7 @@ const Register = () => {
       .catch((err) => {
         // console.log(err);
       });
-  }, [data]);
+  }, []);
   const {
     _id,
     email,
@@ -62,15 +62,7 @@ const Register = () => {
     const lastName = form.last_name.value;
     const contact = form.contact.value;
     const info = form.info.value;
-    // const particpent = {
-    //   email,
-    //   marathon_titel,
-    //   firstName,
-    //   lastName,
-    //   contact,
-    //   info,
-    //   register_date,
-    // };
+
     if (!data?.register_email || user?.email !== data?.register_email) {
       axios
         .post("http://localhost:3000/participer", {

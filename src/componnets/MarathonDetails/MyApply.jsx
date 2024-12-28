@@ -1,11 +1,13 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 import { MyMainContext } from "../../AuthProvider/AuthProvider";
+import Swal from "sweetalert2";
 
 const MyApply = () => {
   const [participentEvent, setParticipentEvent] = useState([]);
+  const [modal, setModal] = useState(true);
   const { user } = useContext(MyMainContext);
-  console.log(user?.email);
+  // console.log(user?.email);
   useEffect(() => {
     axios
       .get(`http://localhost:3000/participer/${user?.email}`)
@@ -13,13 +15,73 @@ const MyApply = () => {
       .catch((err) => {
         // console.log(err?.massage)
       });
-  }, [user]);
+  }, [user, participentEvent]);
 
   const handelUpdate = (_id) => {
     event.preventDefault();
+
     console.log(_id, "update info");
+
+    //
+    //
+    const form = event.target;
+    const email = form.email.value;
+    const marathon_titel = form.titel.value;
+    const register_date = form.registerDate.value;
+    const firstName = form.first_name.value;
+    const lastName = form.last_name.value;
+    const contact = form.contact.value;
+    const info = form.info.value;
+
+    //
+    axios
+      .post(`http://localhost:3000/participer/${_id}`, {
+        id: _id,
+        firstName: firstName,
+        lastName: lastName,
+        contact: contact,
+        info: info,
+      })
+      .then((res) => {
+        setModal(true);
+        if (res?.data?.modifiedCount === 1) {
+          Swal.fire({
+            title: "Update succes!",
+            icon: "success",
+            draggable: true,
+          });
+        }
+      })
+      .catch((err) => console.log(err.message));
+
+    //
+    // document.getElementById(`${_id}`).classList.remove("hedden");
+    // ei khan thke soru korbo
   };
   const handelDelete = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      // console.log(result.isConfirmed);
+      if (result.isConfirmed) {
+        axios
+          .delete(`http://localhost:3000/participer/${_id}`, { _id })
+          .then((res) => {
+            Swal.fire({
+              title: "Deleted!",
+              text: "Your file has been deleted.",
+              icon: "success",
+            });
+          })
+          .catch((err) => console.log(err.massage, "deletvfvsdf"));
+      }
+    });
     console.log(_id, "this is delete");
   };
 
@@ -60,18 +122,21 @@ const MyApply = () => {
             </tr>
 
             {/* modal Update for uniq id */}
-            <dialog id={`${item?._id}`} className="modal">
+            <dialog
+              id={`${item?._id}`}
+              className={`modal ${modal ? "" : "hidden"}`}
+            >
               <div className="modal-box">
                 <form method="dialog">
-                  {/* if there is a button in form, it will close the modal */}
                   <button className="btn btn-sm btn-circle btn-ghost absolute right-2 top-2">
                     ✕
                   </button>
                 </form>
                 <h1 className="text-2xl font-extrabold p-5">Update Info</h1>
+                {/* info form */}
                 <form
                   onSubmit={() => handelUpdate(item?._id)}
-                  className="card-body grid md:grid-cols-2 gap-5"
+                  className=" update card-body grid md:grid-cols-2 gap-5"
                 >
                   {/* email */}
                   <div className="form-control">
@@ -81,10 +146,11 @@ const MyApply = () => {
                       </span>
                     </label>
                     <input
+                      readOnly
                       type="text"
                       name="email"
-                      // value={user_email}
-                      className="input input-bordered"
+                      value={item?.email}
+                      className="input input-bordered text-gray-400"
                     />
                   </div>
                   {/* marathon titel */}
@@ -95,24 +161,26 @@ const MyApply = () => {
                       </span>
                     </label>
                     <input
+                      readOnly
                       type="text"
-                      // value={marathon_title}
+                      value={item?.marathon_titel}
                       name="titel"
-                      className="input input-bordered"
+                      className="input input-bordered text-gray-400"
                     />
                   </div>
-                  {/* start date */}
+                  {/* regiter date */}
                   <div className="form-control">
                     <label className="label">
                       <span className="label-text text-lg font-semibold">
-                        Start Date
+                        Registration Date
                       </span>
                     </label>
                     <input
+                      readOnly
                       type="text"
-                      name="start_date"
-                      // value={marathon_start_date}
-                      className="input input-bordered"
+                      name="registerDate"
+                      value={item?.register_date}
+                      className="input input-bordered text-gray-400"
                     />
                   </div>
                   {/* frist name */}
@@ -125,7 +193,7 @@ const MyApply = () => {
                     <input
                       type="text"
                       name="first_name"
-                      placeholder="Enter Your First Name"
+                      defaultValue={item?.firstName}
                       className="input input-bordered"
                     />
                   </div>
@@ -139,7 +207,7 @@ const MyApply = () => {
                     <input
                       type="text"
                       name="last_name"
-                      placeholder="Enter Your Last Name"
+                      defaultValue={item?.lastName}
                       className="input input-bordered"
                     />
                   </div>
@@ -153,7 +221,7 @@ const MyApply = () => {
                     <input
                       type="number"
                       name="contact"
-                      placeholder="Enter Your Contact Number"
+                      defaultValue={item?.contact}
                       className="input input-bordered"
                     />
                   </div>
@@ -166,26 +234,29 @@ const MyApply = () => {
                     </label>
                     <textarea
                       className="textarea textarea-bordered"
-                      placeholder="Enter Info"
+                      defaultValue={item?.info}
                       name="info"
                     ></textarea>
                   </div>
                   {/* btn */}
                   <br />
-                  <div className="form-control mt-6 md:col-span-2">
+                  <div className="form-control mt-6 md:col-span-2 ">
+                    {/* ei khane kisu kaj ache modal bondho hocche na */}
                     <button
-                      className="btn text-white text-xl  bg-orange-400 hover:bg-orange-300"
+                      onClick={() => setModal(!true)}
                       type="submit"
+                      className="btn text-white text-xl  bg-orange-400 hover:bg-orange-300"
                     >
                       Update Now
                     </button>
                   </div>
+                  {/* modal close */}
+                  {/* delete for modal uniq id */}
+
+                  {/*  */}
                 </form>
               </div>
             </dialog>
-            {/*  */}
-            {/* delete for modal uniq id */}
-
             {/*  */}
           </tbody>
         ))}
