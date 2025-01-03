@@ -13,6 +13,8 @@ import MarathonPage from "./componnets/MarathonPageLayout/MarathonPage";
 import Details from "./componnets/MarathonDetails/Details";
 import Register from "./componnets/From/Register";
 import MyApply from "./componnets/MarathonDetails/MyApply";
+import Addmerathon from "./componnets/From/Addmerathon";
+import Mymarathon from "./componnets/MarathonDetails/Mymarathon";
 
 //
 const router = createBrowserRouter([
@@ -34,9 +36,15 @@ const router = createBrowserRouter([
       },
       {
         // privet
-        path: "/marathons",
-        element: <MarathonPage></MarathonPage>,
+        path: "/addmarathon",
+        element: <Addmerathon></Addmerathon>,
       },
+      {
+        // privet
+        path: "/myMarathon",
+        element: <Mymarathon></Mymarathon>,
+      },
+
       {
         // privet
         path: "/marathons/:id",

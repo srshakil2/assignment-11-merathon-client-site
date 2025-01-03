@@ -1,7 +1,9 @@
 // import React, { useContext } from "react";
 import Homebanner from "../Banner/Homebanner";
-import Fakecard from "../Cards/Fakecard";
+// import Fakecard from "../Cards/Fakecard";
 import { NavLink } from "react-router-dom";
+import MarathonPage from "../MarathonPageLayout/MarathonPage";
+import Fakecard from "../Cards/Fakecard";
 // import { MyMainContext } from "../../AuthProvider/AuthProvider";
 
 const Mainleout = () => {
@@ -65,16 +67,22 @@ const Mainleout = () => {
         </p>
         {/* btn Create now */}
         <div className="mt-5">
-          <NavLink className="btn bg-orange-400">CREATE NOW</NavLink>
+          <NavLink to={"/addmarathon"} className="btn bg-orange-400 uppercase">
+            Add marathons
+          </NavLink>
         </div>
       </div>
-      {/* user upcoming card */}
-      <div className="">
-        <h2 className=" text-5xl font-bold">Upcoming Marathons....</h2>
-        <div className=" p-10">{/* mongo DB card */}</div>
-      </div>
-      {/* Fakecard */}
+
+      {/* Marathon page */}
       <div className="mt-10">
+        {/* <Fakecard></Fakecard> */}
+        <MarathonPage></MarathonPage>
+      </div>
+      {/* facke card */}
+      <div className="my-10">
+        <h2 className=" text-5xl font-bold mb-7">
+          Upcoming Marathons<span className="text-orange-400">....</span>
+        </h2>
         <Fakecard></Fakecard>
       </div>
     </div>

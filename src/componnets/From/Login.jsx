@@ -28,7 +28,7 @@ const Login = () => {
           // toast.success("soccessfully create accunt");
         })
         .catch((err) => console.log(err));
-      navigate("/marathons");
+      navigate("/");
     });
   };
 
@@ -38,7 +38,7 @@ const Login = () => {
     const password = e.target.password.value;
     singinhhandel(email, password)
       .then((res) => {
-        navigate("/marathons");
+        navigate("/");
       })
       .catch((error) => {
         // toast.error("sorry your info is not valid");

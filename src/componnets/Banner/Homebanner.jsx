@@ -54,7 +54,12 @@ const Homebanner = () => {
         </p>
         {/* create now btn */}
         <div>
-          <NavLink className="btn bg-orange-400 text-xl">CREATE NOW !</NavLink>
+          <NavLink
+            to={"/addmarathon"}
+            className="btn bg-orange-400 text-xl uppercase"
+          >
+            Add marathons !
+          </NavLink>
         </div>
       </div>
     </div>

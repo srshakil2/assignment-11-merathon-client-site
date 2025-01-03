@@ -1,34 +1,78 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { FaCalendarAlt, FaLocationArrow } from "react-icons/fa";
 
 const CardFack = ({ data }) => {
+  // const { id } = useParams();
   const {
-    category,
-    header,
-    img,
+    marathon_title,
+    start_registration_date,
+    end_registration_date,
+    marathon_start_date,
     location,
-    registration_date,
-    registration_end_date,
-    time,
-    title,
+    running_distance,
+    description,
+    marathon_image,
   } = data;
   return (
-    <div className="card bg-base-100 shadow-xl">
-      <figure>
-        <img src={img} alt={title} className="w-full h-48 object-cover" />
-      </figure>
-      <div className="card-body">
-        <h2 className="card-title text-xl font-bold">{title}</h2>
-        <p className="text-sm text-gray-500">{location}</p>
-        <p className="text-sm text-gray-500">
-          Registration: {registration_date} to {registration_end_date}
-        </p>
-        <p className="text-sm text-gray-500">Time: {time}</p>
-        <p className="text-sm text-gray-500">Categories: {category}</p>
-        <div className="card-actions justify-end">
-          <Link className="btn bg-orange-400">See Details</Link>
+    <div>
+      <section>
+        <div className=" rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800 ">
+          {/* Image Section */}
+          <img
+            className="w-full h-56 object-cover"
+            src={marathon_image}
+            alt={marathon_title}
+          />
+
+          <div className="p-4">
+            {/* Marathon Title */}
+            <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
+              {marathon_title}
+            </h2>
+
+            {/* Marathon Dates */}
+            <div className="flex items-center mt-2 text-sm text-gray-600 dark:text-gray-400">
+              <FaCalendarAlt className="mr-2" />
+              <span>
+                Registration: {start_registration_date} -{" "}
+                {end_registration_date}
+              </span>
+            </div>
+            <div className="flex items-center mt-1 text-sm text-gray-600 dark:text-gray-400">
+              <FaCalendarAlt className="mr-2" />
+              <span>Start Date: {marathon_start_date}</span>
+            </div>
+
+            {/* Location Section */}
+            <div className="flex items-center mt-3 text-sm text-gray-600 dark:text-gray-400">
+              <FaLocationArrow className="mr-2" />
+              <span>{location}</span>
+            </div>
+
+            {/* Description */}
+            <p className="mt-4 text-gray-600 dark:text-gray-400 text-sm">
+              {description}
+            </p>
+
+            {/* Total Registration Count & Email */}
+            <div className="flex justify-between items-center mt-4">
+              {/* <span className="text-sm text-gray-600 dark:text-gray-400">
+                {total_registration_count} participants
+              </span> */}
+              <span>Distance: {running_distance}</span>
+            </div>
+            {/* Footer Section btn see details */}
+            {/* <div className=" dark:bg-gray-900 p-4 rounded-b-lg ">
+              <Link
+                to={`/marathons/${_id}`}
+                className="w-full inline-block bg-orange-400 text-white text-center py-2 rounded-lg hover:bg-orange-500 "
+              >
+                See Details
+              </Link>
+            </div> */}
+          </div>
         </div>
-      </div>
+      </section>
     </div>
   );
 };

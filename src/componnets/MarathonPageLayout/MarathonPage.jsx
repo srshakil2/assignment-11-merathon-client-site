@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import Bannerm from "./Bannerm";
+
 import axios from "axios";
 import MarathonCard from "./MarathonCard";
 
@@ -7,16 +7,16 @@ const MarathonPage = () => {
   const [data, setData] = useState([]);
   useEffect(() => {
     axios
-      .get("http://localhost:3000/data")
+      .get("http://localhost:3000/sixData")
       .then((res) => setData(res.data))
       .catch((err) => console.log(err));
   }, []);
-  console.log(data);
+  // console.log(data);
   return (
     <div>
-      <section>
+      {/* <section>
         <Bannerm></Bannerm>
-      </section>
+      </section> */}
       {/* comming soon */}
       <section>
         <div className=" flex items-center gap-5">

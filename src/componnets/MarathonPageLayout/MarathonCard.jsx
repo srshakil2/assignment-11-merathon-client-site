@@ -10,7 +10,7 @@ const MarathonCard = ({ item }) => {
   const userEmail = user?.email;
   const {
     _id,
-    email,
+
     marathon_title,
     start_registration_date,
     end_registration_date,
@@ -19,7 +19,7 @@ const MarathonCard = ({ item }) => {
     running_distance,
     description,
     marathon_image,
-    created_at,
+
     total_registration_count,
   } = item || {};
 
@@ -70,6 +70,7 @@ const MarathonCard = ({ item }) => {
               <span className="text-sm text-gray-600 dark:text-gray-400">
                 {total_registration_count} participants
               </span>
+              <span>Distance: {running_distance}</span>
             </div>
             {/* Footer Section btn see details */}
             <div className=" dark:bg-gray-900 p-4 rounded-b-lg">
