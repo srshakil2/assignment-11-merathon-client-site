@@ -6,12 +6,15 @@ import { Helmet } from "react-helmet";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
 import auth from "../../AuthProvider/firebase";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const SingUp = () => {
   const [passwordShow, setPasswordShow] = useState(false);
   const navigate = useNavigate();
   const { singUphandel } = useContext(MyMainContext);
   const [errors, setErrors] = useState(null);
+
+  const pass = /^(?=.*[a-z])(?=.*[A-Z]).{6,}$/;
 
   const handelSingUp = (e) => {
     e.preventDefault();
@@ -20,12 +23,16 @@ const SingUp = () => {
     const photoUrl = e.target.url.value;
     const email = e.target.email.value;
     const password = e.target.password.value;
-    const confirmpassword = e.target.confirmpassword.value;
-    // akhanthake suru
-    //   const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d]{6,}$/;
-    //   if (!passwordRegex.test(password)) {
-    //     return toast.error("password not valid");
-    //   }
+    if (!pass.test(password)) {
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Password length must be six and must be one Uppercase and one Lowercase",
+        footer: '<a href="#">Why do I have this issue?</a>',
+      });
+      return;
+    }
+
     singUphandel(email, password)
       .then((res) => {
         updateProfile(auth.currentUser, {
@@ -40,16 +47,38 @@ const SingUp = () => {
             })
             .then((res) => {
               console.log(res.data);
-
+              if (res.data.acknowledged) {
+                Swal.fire({
+                  position: "top-end",
+                  icon: "success",
+                  title: "soccessfully create accunt",
+                  showConfirmButton: false,
+                  timer: 1500,
+                });
+              }
               // toast.success("soccessfully create accunt");
               navigate("/");
             })
-            .catch((err) => console.log(err));
+            .catch((err) => {
+              Swal.fire({
+                position: "top-end",
+                icon: "error",
+                title: "Something is fisie..",
+                showConfirmButton: false,
+                timer: 1500,
+              });
+            });
         });
       })
-      .catch((error) => setErrors(error.message));
-
-    // console.log(name, photoUrl, email, password, confirmpassword);
+      .catch((error) => {
+        Swal.fire({
+          position: "top-end",
+          icon: "error",
+          title: "Your not valid parson..",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+      });
   };
   return (
     <div className="hero">
@@ -125,46 +154,6 @@ const SingUp = () => {
                   <FaEye />
                 </span>
               )}
-            </div>
-            <div className="form-control relative">
-              <label className="label">
-                <span className="label-text">Confirm Password</span>
-              </label>
-              {/* 5 confirmpassword */}
-              <input
-                name="confirmpassword"
-                type={!passwordShow ? "password" : "text"}
-                placeholder="Confirm Password"
-                className="input input-bordered"
-                required
-              />
-              {!passwordShow ? (
-                <span
-                  onClick={() => setPasswordShow(true)}
-                  className=" absolute right-5 top-[50px]"
-                >
-                  <FaEyeSlash />
-                </span>
-              ) : (
-                <span
-                  onClick={() => setPasswordShow(false)}
-                  className=" absolute right-5 top-[50px]"
-                >
-                  <FaEye />
-                </span>
-              )}
-              <label className="label">
-                <a href="#" className="label-text-alt link link-hover">
-                  Forgot password?
-                </a>
-              </label>
-              <label>
-                {errors ? (
-                  <p className=" text-red-600 text-sm ">{errors}</p>
-                ) : (
-                  ""
-                )}
-              </label>
             </div>
             <div className="form-control mt-6">
               <button

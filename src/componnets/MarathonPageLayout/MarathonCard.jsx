@@ -10,7 +10,6 @@ const MarathonCard = ({ item }) => {
   const userEmail = user?.email;
   const {
     _id,
-
     marathon_title,
     start_registration_date,
     end_registration_date,
@@ -75,7 +74,7 @@ const MarathonCard = ({ item }) => {
             {/* Footer Section btn see details */}
             <div className=" dark:bg-gray-900 p-4 rounded-b-lg">
               <Link
-                to={`/marathons/${_id}`}
+                to={userEmail ? `/marathons/${_id}` : "/login"}
                 className="w-full inline-block bg-orange-400 text-white text-center py-2 rounded-lg hover:bg-orange-500 "
               >
                 See Details

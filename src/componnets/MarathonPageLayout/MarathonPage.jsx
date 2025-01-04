@@ -14,9 +14,6 @@ const MarathonPage = () => {
   // console.log(data);
   return (
     <div>
-      {/* <section>
-        <Bannerm></Bannerm>
-      </section> */}
       {/* comming soon */}
       <section>
         <div className=" flex items-center gap-5">

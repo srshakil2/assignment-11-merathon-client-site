@@ -35,13 +35,11 @@ const Mymarathon = () => {
       .then((res) => {
         setSingelData({ ...res.data });
         setIsOpen(true);
-        // setLoopRunning(true);
       })
       .catch((err) => {});
   };
   // done
   const updateData = (e, _id) => {
-    // console.log(_id);
     e.preventDefault();
     const form = e.target;
     const id = _id;

@@ -5,6 +5,7 @@ import { NavLink, useNavigate } from "react-router-dom";
 import { MyMainContext } from "../../AuthProvider/AuthProvider";
 import { FcGoogle } from "react-icons/fc";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const Login = () => {
   const [passwordShow, setPasswordShow] = useState(false);
@@ -41,7 +42,12 @@ const Login = () => {
         navigate("/");
       })
       .catch((error) => {
-        // toast.error("sorry your info is not valid");
+        Swal.fire({
+          icon: "error",
+          title: "Oops...",
+          text: "Something went wrong!",
+          footer: '<a href="#">Why do I have this issue?</a>',
+        });
       });
   };
   return (

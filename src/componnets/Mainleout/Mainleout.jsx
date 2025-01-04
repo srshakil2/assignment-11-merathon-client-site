@@ -4,6 +4,7 @@ import Homebanner from "../Banner/Homebanner";
 import { NavLink } from "react-router-dom";
 import MarathonPage from "../MarathonPageLayout/MarathonPage";
 import Fakecard from "../Cards/Fakecard";
+import Homesection from "../Sections/Homesection";
 // import { MyMainContext } from "../../AuthProvider/AuthProvider";
 
 const Mainleout = () => {
@@ -75,7 +76,6 @@ const Mainleout = () => {
 
       {/* Marathon page */}
       <div className="mt-10">
-        {/* <Fakecard></Fakecard> */}
         <MarathonPage></MarathonPage>
       </div>
       {/* facke card */}
@@ -84,6 +84,9 @@ const Mainleout = () => {
           Upcoming Marathons<span className="text-orange-400">....</span>
         </h2>
         <Fakecard></Fakecard>
+      </div>
+      <div className=" mb-10">
+        <Homesection></Homesection>
       </div>
     </div>
   );

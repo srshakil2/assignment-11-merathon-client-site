@@ -11,28 +11,46 @@ import Swal from "sweetalert2";
 
 const MyApply = () => {
   const [participentEvent, setParticipentEvent] = useState([]);
+  const [loopRunning, setLoopRunning] = useState(true);
+  const [singelData, setSingelData] = useState({});
 
   // dasiyUI ulternativ
   let [isOpen, setIsOpen] = useState(false);
 
   const { user } = useContext(MyMainContext);
-  // console.log(user?.email);
+  const email = user?.email;
+
   useEffect(() => {
+    if (email) {
+      axios
+        .get(`http://localhost:3000/participer/${user?.email}`)
+        .then((res) => {
+          setParticipentEvent(res.data);
+          if (loopRunning) {
+            setLoopRunning(false);
+          }
+        })
+        .catch((err) => {
+          // console.log(err?.massage)
+        });
+    }
+  }, [email, singelData, participentEvent]);
+
+  const handelUpdateData = (id) => {
     axios
-      .get(`http://localhost:3000/participer/${user?.email}`)
-      .then((res) => setParticipentEvent(res.data))
-      .catch((err) => {
-        // console.log(err?.massage)
-      });
-  }, [user, participentEvent]);
+      .get(`http://localhost:3000/participer/singeldata/${id}`, { id })
+      .then((res) => {
+        const [item] = res.data;
+        setSingelData({ ...item });
+        setIsOpen(true);
+      })
+      .catch((err) => {});
+  };
+  //
 
   const handelUpdate = (e, _id) => {
     e.preventDefault();
-
-    console.log(_id, "update info");
-
-    //
-    //
+    // console.log(_id, "update info");
     const form = e.target;
     const email = form.email.value;
     const marathon_titel = form.titel.value;
@@ -52,7 +70,7 @@ const MyApply = () => {
         info: info,
       })
       .then((res) => {
-        setIsOpen(false);
+        // console.log(res.data);
         if (res?.data?.modifiedCount === 1) {
           Swal.fire({
             title: "Update succes!",
@@ -60,12 +78,10 @@ const MyApply = () => {
             draggable: true,
           });
         }
+        setIsOpen(false);
+        setLoopRunning(true);
       })
       .catch((err) => console.log(err.message));
-
-    //
-    // document.getElementById(`${_id}`).classList.remove("hedden");
-    // ei khan thke soru korbo
   };
   const handelDelete = (_id) => {
     Swal.fire({
@@ -117,7 +133,7 @@ const MyApply = () => {
               <tr>
                 {/* update btn table */}
                 <button
-                  onClick={() => setIsOpen(true)}
+                  onClick={() => handelUpdateData(item?._id)}
                   className="btn mr-2 mb-1 text-orange-700 bg-blue-200"
                 >
                   Update
@@ -131,138 +147,140 @@ const MyApply = () => {
                 </button>
               </tr>
             </tr>
-
-            {/* modal Update for uniq id */}
-            <Dialog
-              open={isOpen}
-              onClose={() => setIsOpen(false)}
-              className="relative z-50"
-            >
-              <div className="fixed inset-0 flex justify-center pt-24 mt-1 mb-10 ">
-                <DialogPanel className=" shadow-lg rounded-xl bg-white p-12 ">
-                  <form
-                    onSubmit={(e) => handelUpdate(e, item?._id)}
-                    className=" grid grid-cols-2 md:grid-cols-3 gap-5"
-                  >
-                    {/* form data */}
-                    {/* email */}
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text text-lg font-semibold">
-                          Email
-                        </span>
-                      </label>
-                      <input
-                        readOnly
-                        type="text"
-                        name="email"
-                        value={item?.email}
-                        className="input input-bordered text-gray-400"
-                      />
-                    </div>
-                    {/* marathon titel */}
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text text-lg font-semibold">
-                          Marathon Titel
-                        </span>
-                      </label>
-                      <input
-                        readOnly
-                        type="text"
-                        value={item?.marathon_titel}
-                        name="titel"
-                        className="input input-bordered text-gray-400"
-                      />
-                    </div>
-                    {/* regiter date */}
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text text-lg font-semibold">
-                          Registration Date
-                        </span>
-                      </label>
-                      <input
-                        readOnly
-                        type="text"
-                        name="registerDate"
-                        value={item?.register_date}
-                        className="input input-bordered text-gray-400"
-                      />
-                    </div>
-                    {/* frist name */}
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text text-lg font-semibold">
-                          First Name
-                        </span>
-                      </label>
-                      <input
-                        type="text"
-                        name="first_name"
-                        defaultValue={item?.firstName}
-                        className="input input-bordered"
-                      />
-                    </div>
-                    {/* last name */}
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text text-lg font-semibold">
-                          Last Name
-                        </span>
-                      </label>
-                      <input
-                        type="text"
-                        name="last_name"
-                        defaultValue={item?.lastName}
-                        className="input input-bordered"
-                      />
-                    </div>
-                    {/* contact number */}
-                    <div className="form-control">
-                      <label className="label">
-                        <span className="label-text text-lg font-semibold">
-                          Contact
-                        </span>
-                      </label>
-                      <input
-                        type="number"
-                        name="contact"
-                        defaultValue={item?.contact}
-                        className="input input-bordered"
-                      />
-                    </div>
-                    {/* info */}
-                    <div className="form-control md:col-span-2">
-                      <label className="label">
-                        <span className="label-text text-lg font-semibold">
-                          Enter or Info
-                        </span>
-                      </label>
-                      <textarea
-                        className="textarea textarea-bordered"
-                        defaultValue={item?.info}
-                        name="info"
-                      ></textarea>
-                    </div>
-                    {/* btn form submit */}
-                    <div className="flex gap-4 items-center justify-center mt-5">
-                      <button
-                        type="submit"
-                        // onClick={() => setIsOpen(false)}
-                        className="btn text-white text-xl  bg-orange-400 hover:bg-orange-300"
-                      >
-                        Update Now
-                      </button>
-                    </div>
-                  </form>
-                </DialogPanel>
-              </div>
-            </Dialog>
-            {/*  */}
           </tbody>
         ))}
       </table>
+      {/* modal open */}
+      <div>
+        {/* modal Update for uniq id */}
+        <Dialog
+          open={isOpen}
+          onClose={() => setIsOpen(false)}
+          className="relative z-50"
+        >
+          <div className="fixed inset-0 flex justify-center pt-24 mt-1 mb-10 ">
+            <DialogPanel className=" shadow-lg rounded-xl bg-white p-12 ">
+              <form
+                onSubmit={(e) => handelUpdate(e, singelData?._id)}
+                className=" grid grid-cols-2 md:grid-cols-3 gap-5"
+              >
+                {/* form data */}
+                {/* email */}
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-lg font-semibold">
+                      Email
+                    </span>
+                  </label>
+                  <input
+                    readOnly
+                    type="text"
+                    name="email"
+                    value={singelData?.email}
+                    className="input input-bordered text-gray-400"
+                  />
+                </div>
+                {/* marathon titel */}
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-lg font-semibold">
+                      Marathon Titel
+                    </span>
+                  </label>
+                  <input
+                    readOnly
+                    type="text"
+                    value={singelData?.marathon_titel}
+                    name="titel"
+                    className="input input-bordered text-gray-400"
+                  />
+                </div>
+                {/* regiter date */}
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-lg font-semibold">
+                      Registration Date
+                    </span>
+                  </label>
+                  <input
+                    readOnly
+                    type="text"
+                    name="registerDate"
+                    value={singelData?.register_date}
+                    className="input input-bordered text-gray-400"
+                  />
+                </div>
+                {/* frist name */}
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-lg font-semibold">
+                      First Name
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    name="first_name"
+                    defaultValue={singelData?.firstName}
+                    className="input input-bordered"
+                  />
+                </div>
+                {/* last name */}
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-lg font-semibold">
+                      Last Name
+                    </span>
+                  </label>
+                  <input
+                    type="text"
+                    name="last_name"
+                    defaultValue={singelData?.lastName}
+                    className="input input-bordered"
+                  />
+                </div>
+                {/* contact number */}
+                <div className="form-control">
+                  <label className="label">
+                    <span className="label-text text-lg font-semibold">
+                      Contact
+                    </span>
+                  </label>
+                  <input
+                    type="number"
+                    name="contact"
+                    defaultValue={singelData?.contact}
+                    className="input input-bordered"
+                  />
+                </div>
+                {/* info */}
+                <div className="form-control md:col-span-2">
+                  <label className="label">
+                    <span className="label-text text-lg font-semibold">
+                      Enter or Info
+                    </span>
+                  </label>
+                  <textarea
+                    className="textarea textarea-bordered"
+                    defaultValue={singelData?.info}
+                    name="info"
+                  ></textarea>
+                </div>
+                {/* btn form submit */}
+                <div className="flex gap-4 items-center justify-center mt-5">
+                  <button
+                    type="submit"
+                    // onClick={() => setIsOpen(false)}
+                    className="btn text-white text-xl  bg-orange-400 hover:bg-orange-300"
+                  >
+                    Update Now
+                  </button>
+                </div>
+              </form>
+            </DialogPanel>
+          </div>
+        </Dialog>
+        {/*  */}
+      </div>
     </div>
   );
 };

@@ -5,6 +5,7 @@ export default {
     extend: {
       backgroundImage: {
         bg: "url('https://i.ibb.co.com/T8VDkxS/bg-banner.jpg')",
+        bgsc: "url('https://i.ibb.co.com/h7RtW86/bg.jpg')",
       },
     },
   },

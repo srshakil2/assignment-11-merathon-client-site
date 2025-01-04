@@ -5,6 +5,55 @@ import { MyMainContext } from "../AuthProvider/AuthProvider";
 const Navber = () => {
   const { handelLogOut } = useContext(MyMainContext);
   const { user } = useContext(MyMainContext);
+
+  const exsistUser = (
+    <ul className="menu menu-horizontal px-1 items-center">
+      <NavLink className={"mr-5 text-lg font-semibold"}>
+        <li>HOME</li>
+      </NavLink>
+
+      <NavLink className={"text-lg font-semibold"}>
+        <li>ABOUT US</li>
+      </NavLink>
+      <li className="text-lg font-semibold">
+        <details>
+          <summary className=" ">PAGES</summary>
+          <ul className="z-20 p-2 ">
+            <li className="">
+              <Link to={"/marathons"}>Marathon Page</Link>
+            </li>
+            <li>
+              <Link>Submenu 2</Link>
+            </li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  );
+  const nathingUser = (
+    <ul className="menu menu-horizontal px-1 items-center">
+      <NavLink className={"mr-5 text-lg font-semibold"}>
+        <li>HOME</li>
+      </NavLink>
+
+      <NavLink className={"text-lg font-semibold"}>
+        <li>ABOUT US</li>
+      </NavLink>
+      <li className="text-lg font-semibold">
+        <details>
+          <summary className=" ">PAGES</summary>
+          <ul className="z-20 p-2 ">
+            <li className="">
+              <Link to={"/marathons"}>Marathon Page</Link>
+            </li>
+            <li>
+              <Link>Submenu 2</Link>
+            </li>
+          </ul>
+        </details>
+      </li>
+    </ul>
+  );
   return (
     <div className="navbar bg-orange-200 px-10">
       <div className="navbar-start">
@@ -29,35 +78,72 @@ const Navber = () => {
             tabIndex={0}
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
           >
-            <NavLink className={"mr-5"}>
-              <li>HOME</li>
+            <NavLink
+              to={"/"}
+              className={({ isActive }) =>
+                isActive
+                  ? "mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
+                  : "mr-5 text-lg font-semibold"
+              }
+            >
+              <li>Home</li>
             </NavLink>
 
-            <NavLink>
-              <li>ABOUT US</li>
+            <NavLink
+              to={"/marathons"}
+              className={({ isActive }) =>
+                isActive
+                  ? "mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
+                  : "mr-5 text-lg font-semibold"
+              }
+            >
+              <li>Marathons</li>
             </NavLink>
-            <li>
-              <summary>PAGES</summary>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
-            <li>
-              <summary>BLOG</summary>
-              <ul className="p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </li>
+            {user ? (
+              <li>
+                <summary className="text-lg font-semibold">Dashboard</summary>
+                <ul className="p-2">
+                  <li>
+                    <NavLink
+                      to={"/addmarathon"}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
+                          : "mr-5 text-lg font-semibold"
+                      }
+                    >
+                      Add Marathon
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive
+                          ? "mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
+                          : "mr-5 text-lg font-semibold"
+                      }
+                      to={"/myMarathon"}
+                    >
+                      My Marathon List
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to={"/marathons/myApply"}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
+                          : "mr-5 text-lg font-semibold"
+                      }
+                    >
+                      My Apply List
+                    </NavLink>
+                  </li>
+                </ul>
+              </li>
+            ) : (
+              ""
+            )}
           </ul>
         </div>
         <img
@@ -69,40 +155,74 @@ const Navber = () => {
       {/* lg navlink */}
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1 items-center">
-          <NavLink className={"mr-5 text-lg font-semibold"}>
-            <li>HOME</li>
+          <NavLink
+            to={"/"}
+            className={({ isActive }) =>
+              isActive
+                ? "mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
+                : "mr-5 text-lg font-semibold"
+            }
+          >
+            <li>Home</li>
           </NavLink>
 
-          <NavLink className={"text-lg font-semibold"}>
-            <li>ABOUT US</li>
+          <NavLink
+            to={"/marathons"}
+            className={({ isActive }) =>
+              isActive
+                ? "mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
+                : "mr-5 text-lg font-semibold"
+            }
+          >
+            <li>Marathons</li>
           </NavLink>
-          <li className="text-lg font-semibold">
-            <details>
-              <summary className=" ">PAGES</summary>
-              <ul className="z-20 p-2 ">
-                <li className="">
-                  <Link to={"/marathons"}>Marathon Page</Link>
-                </li>
-                <li>
-                  <Link>Submenu 2</Link>
-                </li>
-              </ul>
-            </details>
-          </li>
-          {/* BLOG */}
-          <li className="text-lg font-semibold">
-            <details>
-              <summary className="">BLOG</summary>
-              <ul className="z-20 p-2">
-                <li>
-                  <a>Submenu 1</a>
-                </li>
-                <li>
-                  <a>Submenu 2</a>
-                </li>
-              </ul>
-            </details>
-          </li>
+          {user ? (
+            <li className="text-lg font-semibold">
+              <details>
+                <summary className=" ">Dashboard</summary>
+                <ul className="z-20 p-2 ">
+                  <li>
+                    <NavLink
+                      to={"/addmarathon"}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
+                          : "mr-5 text-lg font-semibold"
+                      }
+                    >
+                      Add Marathon
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      className={({ isActive }) =>
+                        isActive
+                          ? "mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
+                          : "mr-5 text-lg font-semibold"
+                      }
+                      to={"/myMarathon"}
+                    >
+                      My Marathon List
+                    </NavLink>
+                  </li>
+                  <li>
+                    <NavLink
+                      to={"/marathons/myApply"}
+                      className={({ isActive }) =>
+                        isActive
+                          ? "mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
+                          : "mr-5 text-lg font-semibold"
+                      }
+                    >
+                      My Apply List
+                    </NavLink>
+                  </li>
+                </ul>
+              </details>
+            </li>
+          ) : (
+            ""
+          )}
         </ul>
       </div>
       {/* btn profile */}
@@ -122,7 +242,7 @@ const Navber = () => {
             </div>
             <button
               onClick={handelLogOut}
-              className="btn bg-yellow-300 text-black font-semibold ml-3"
+              className="btn bg-orange-300 text-black font-semibold ml-3"
             >
               LogOut
             </button>
@@ -130,7 +250,7 @@ const Navber = () => {
         ) : (
           <NavLink
             to={"/login"}
-            className={"btn text-black text-lg bg-yellow-300"}
+            className={"btn text-black text-lg bg-orange-300"}
           >
             Login now
           </NavLink>

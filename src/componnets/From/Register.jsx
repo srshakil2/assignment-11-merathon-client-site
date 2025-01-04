@@ -46,7 +46,6 @@ const Register = () => {
     // compear date
     const userDate = new Date(register_date);
     const endDate = new Date(end_date);
-    // console.log(userDate, endDate);
     if (userDate.getTime() > endDate.getTime()) {
       Swal.fire({
         icon: "error",
@@ -56,8 +55,6 @@ const Register = () => {
       });
       return;
     }
-    //
-    console.log(register_date, "kjhjkg", end_date);
     const firstName = form.first_name.value;
     const lastName = form.last_name.value;
     const contact = form.contact.value;
