@@ -62,7 +62,7 @@ const Addmerathon = () => {
           showConfirmButton: false,
           timer: 1500,
         });
-        // navigate(`/myMarathon`);
+        form.reset();
       })
       .catch((err) => {
         // console.log("error massage for: ", err)
@@ -83,6 +83,7 @@ const Addmerathon = () => {
             Email
           </label>
           <input
+            value={user?.email}
             type="email"
             name="email"
             className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"

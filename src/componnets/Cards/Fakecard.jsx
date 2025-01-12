@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import CardFack from "./CardFack";
 
 const Fakecard = () => {
@@ -6,8 +6,10 @@ const Fakecard = () => {
   useEffect(() => {
     fetch("/data.json")
       .then((res) => res.json())
-      .then((data) => setFackData([...data]));
-  }, [fackData]);
+      .then((data) => {
+        setFackData([...data]);
+      });
+  }, []);
 
   return (
     <div>

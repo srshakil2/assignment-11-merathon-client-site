@@ -7,13 +7,13 @@ import { getAuth } from "firebase/auth";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyDcLYi1dQ252FZkp6v7ijhwuMd6-4qBDOM",
-  authDomain: "merathon-client-side.firebaseapp.com",
-  projectId: "merathon-client-side",
-  storageBucket: "merathon-client-side.firebasestorage.app",
-  messagingSenderId: "107519871250",
-  appId: "1:107519871250:web:e90ecf2b1ef43efafc0bcb",
-  measurementId: "G-Q9BLMY415Z",
+  apiKey: import.meta.env.VITE_apiKey,
+  authDomain: import.meta.env.VITE_authDomain,
+  projectId: import.meta.env.VITE_projectId,
+  storageBucket: import.meta.env.VITE_storageBucket,
+  messagingSenderId: import.meta.env.VITE_messagingSenderId,
+  appId: import.meta.env.VITE_appId,
+  measurementId: import.meta.env.VITE_measurementId,
 };
 
 // Initialize Firebase

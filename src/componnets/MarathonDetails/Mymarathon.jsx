@@ -3,10 +3,12 @@ import { MyMainContext } from "../../AuthProvider/AuthProvider";
 import axios from "axios";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import Swal from "sweetalert2";
+import Loding from "../Loding/Loding";
 
 const Mymarathon = () => {
   // dasiyUI ulternativ
   const [loopRunning, setLoopRunning] = useState(true);
+  const [loding, setLoding] = useState(true);
   const [singelData, setSingelData] = useState({});
   let [isOpen, setIsOpen] = useState(false);
   const [addMarathon, setAddMarathon] = useState([]);
@@ -14,10 +16,14 @@ const Mymarathon = () => {
   const email = user?.email;
 
   useEffect(() => {
+    if (!loding) {
+      <Loding></Loding>;
+    }
     if (email) {
       axios
         .get(`http://localhost:3000/data/singeldata/${email}`, { email })
         .then((res) => {
+          setLoding(false);
           setAddMarathon(res.data);
           if (loopRunning) {
             setLoopRunning(false);
@@ -27,7 +33,7 @@ const Mymarathon = () => {
           // console.log(err?.massage)
         });
     }
-  }, [loopRunning, email]);
+  }, [loopRunning, email, loding]);
   // update fn done
   const handelUpdateData = (id) => {
     axios

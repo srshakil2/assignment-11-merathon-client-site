@@ -20,7 +20,8 @@ const Home = () => {
         <Navber></Navber>
       </div>
       {/* Outlet */}
-      <div className=" w-11/12 md:w-11/12 mx-auto">
+      {/* w-11/12 md:w-11/12 mx-auto */}
+      <div className="">
         <Outlet></Outlet>
       </div>
       {/* Footer */}

@@ -16,6 +16,7 @@ import MyApply from "./componnets/MarathonDetails/MyApply";
 import Addmerathon from "./componnets/From/Addmerathon";
 import Mymarathon from "./componnets/MarathonDetails/Mymarathon";
 import Marathons from "./componnets/MarathonPageLayout/Marathons";
+import Privet from "./componnets/Privet/Privet";
 
 //
 const router = createBrowserRouter([
@@ -36,35 +37,59 @@ const router = createBrowserRouter([
         element: <Login></Login>,
       },
       {
-        // privet todo
+        // privet
         path: "/marathons",
-        element: <Marathons></Marathons>,
+        element: (
+          <Privet>
+            <Marathons></Marathons>
+          </Privet>
+        ),
       },
       {
         // privet
         path: "/addmarathon",
-        element: <Addmerathon></Addmerathon>,
+        element: (
+          <Privet>
+            <Addmerathon></Addmerathon>
+          </Privet>
+        ),
       },
       {
         // privet
         path: "/myMarathon",
-        element: <Mymarathon></Mymarathon>,
+        element: (
+          <Privet>
+            <Mymarathon></Mymarathon>
+          </Privet>
+        ),
       },
 
       {
         // privet
         path: "/marathons/:id",
-        element: <Details></Details>,
+        element: (
+          <Privet>
+            <Details></Details>
+          </Privet>
+        ),
       },
       {
         // privet
         path: "/marathons/register/:id",
-        element: <Register></Register>,
+        element: (
+          <Privet>
+            <Register></Register>
+          </Privet>
+        ),
       },
       {
         // privet
         path: "/marathons/myApply",
-        element: <MyApply></MyApply>,
+        element: (
+          <Privet>
+            <MyApply></MyApply>
+          </Privet>
+        ),
       },
     ],
   },

@@ -23,18 +23,18 @@ const MarathonCard = ({ item }) => {
   } = item || {};
 
   return (
-    <div>
+    <section className="flex flex-col ">
       {/* card mongoDB */}
-      <section>
-        <div className=" rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800">
-          {/* Image Section */}
-          <img
-            className="w-full h-56 object-cover"
-            src={marathon_image}
-            alt={marathon_title}
-          />
+      <div className="flex flex-col h-full rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800">
+        {/* Image Section */}
+        <img
+          className="w-full h-56 object-cover"
+          src={marathon_image}
+          alt={marathon_title}
+        />
 
-          <div className="p-4">
+        <div className="p-4 flex flex-col justify-between flex-1 ">
+          <div>
             {/* Marathon Title */}
             <h2 className="text-2xl font-semibold text-gray-800 dark:text-white">
               {marathon_title}
@@ -71,19 +71,19 @@ const MarathonCard = ({ item }) => {
               </span>
               <span>Distance: {running_distance}</span>
             </div>
-            {/* Footer Section btn see details */}
-            <div className=" dark:bg-gray-900 p-4 rounded-b-lg">
-              <Link
-                to={userEmail ? `/marathons/${_id}` : "/login"}
-                className="w-full inline-block bg-orange-400 text-white text-center py-2 rounded-lg hover:bg-orange-500 "
-              >
-                See Details
-              </Link>
-            </div>
+          </div>
+          {/* Footer Section btn see details */}
+          <div className=" dark:bg-gray-900 p-4 rounded-b-lg">
+            <Link
+              to={userEmail ? `/marathons/${_id}` : "/login"}
+              className="w-full inline-block bg-orange-400 text-white text-center py-2 rounded-lg hover:bg-orange-500 "
+            >
+              See Details
+            </Link>
           </div>
         </div>
-      </section>
-    </div>
+      </div>
+    </section>
   );
 };
 
