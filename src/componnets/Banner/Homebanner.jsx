@@ -38,7 +38,7 @@ const Homebanner = () => {
         </div>
       </div>
       {/* Home text */}
-      <div className="space-y-4 ">
+      <div className="space-y-4 ml-5">
         <h5 className="text-lg font-bold">Mileblast Marathon 2025</h5>
         <h1 className=" text-3xl md:text-4xl lg:text-6xl font-bold space-y-5">
           <p>

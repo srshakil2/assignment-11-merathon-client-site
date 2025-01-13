@@ -22,7 +22,9 @@ const Mymarathon = () => {
     }
     if (email) {
       axios
-        .get(`http://localhost:3000/data/singeldata/${email}`, { email })
+        .get(`https://y-jade-phi-87.vercel.app/data/singeldata/${email}`, {
+          email,
+        })
         .then((res) => {
           setLoding(false);
           setAddMarathon(res.data);
@@ -38,7 +40,7 @@ const Mymarathon = () => {
   // update fn done
   const handelUpdateData = (id) => {
     axios
-      .get(`http://localhost:3000/data/${id}`, { id })
+      .get(`https://y-jade-phi-87.vercel.app/data/${id}`, { id })
       .then((res) => {
         setSingelData({ ...res.data });
         setIsOpen(true);
@@ -58,7 +60,7 @@ const Mymarathon = () => {
     const end_registration_date = form.end_registration_date.value;
     const description = form.description.value;
     axios
-      .patch(`http://localhost:3000/data/upDate/${id}`, {
+      .patch(`https://y-jade-phi-87.vercel.app/data/upDate/${id}`, {
         id,
         email,
         marathon_title,
@@ -99,7 +101,9 @@ const Mymarathon = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:3000/data/deleteOne/${id}`, { id })
+          .delete(`https://y-jade-phi-87.vercel.app/data/deleteOne/${id}`, {
+            id,
+          })
           .then((res) => {
             if (res?.data?.deletedCount > 0) {
               Swal.fire({
@@ -119,7 +123,7 @@ const Mymarathon = () => {
   };
   // console.log(addMarathon.length);
   return (
-    <div className="overflow-x-hidden h-screen mt-10 ">
+    <div className="overflow-x-hidden h-screen mt-10 ml-5">
       <Helmet>
         <title>MyMarathon</title>
       </Helmet>

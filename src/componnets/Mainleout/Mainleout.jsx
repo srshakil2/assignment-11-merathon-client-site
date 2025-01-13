@@ -20,7 +20,7 @@ const Mainleout = () => {
           <Homebanner></Homebanner>
         </div>
         {/* down Marathon Category */}
-        <div className="flex items-center gap-2 absolute md:right-10 md:bottom-6 lg:bottom-10 lg:right-10">
+        <div className="mr-5 flex items-center gap-2 absolute md:right-10 md:bottom-6 lg:bottom-10 lg:right-10">
           <p className="text-lg font-bold">Marathon Category</p>
           <div className="w-10">
             <button>
@@ -79,13 +79,13 @@ const Mainleout = () => {
       </div>
 
       {/* Marathon page */}
-      <div className="mt-10">
+      <div className="mt-10 p-5">
         <MarathonPage></MarathonPage>
       </div>
       {/* facke card */}
       <div className="my-10">
-        <h2 className=" text-5xl font-bold mb-7">
-          Upcoming Marathons<span className="text-orange-400">....</span>
+        <h2 className=" text-5xl font-bold mb-7 ml-4">
+          Upcoming Marathons<span className="text-orange-400">...</span>
         </h2>
         <Fakecard></Fakecard>
       </div>

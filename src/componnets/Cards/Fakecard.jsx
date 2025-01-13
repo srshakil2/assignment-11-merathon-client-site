@@ -13,11 +13,10 @@ const Fakecard = () => {
 
   return (
     <div>
-      <p className=" text-lg font-semibold ">Community Event</p>
-      <h3 className=" text-5xl font-bold">
-        Join Our <span className=" bg-orange-300">Marathon</span> Community.
+      <h3 className=" text-5xl font-bold ml-4">
+        Join Our <span className=" bg-orange-300 ">Marathon</span> Community.
       </h3>
-      <p className=" font-semibold">
+      <p className=" font-semibold ml-4">
         Join us for events that motivate, inspire, and build lasting friendships
         on the track and trails.
       </p>

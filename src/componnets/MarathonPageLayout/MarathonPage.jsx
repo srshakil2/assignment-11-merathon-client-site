@@ -7,7 +7,7 @@ const MarathonPage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/sixData")
+      .get("https://y-jade-phi-87.vercel.app/sixData")
       .then((res) => {
         setData(res.data);
       })
@@ -19,7 +19,7 @@ const MarathonPage = () => {
   return (
     <div>
       {/* comming soon */}
-      <section>
+      <section className=" flex items-center justify-center">
         <div className=" flex items-center gap-5">
           <h5 className=" text-xl font-bold">COMING SOON</h5>
           <div className="flex items-center justify-center w-[70px]">

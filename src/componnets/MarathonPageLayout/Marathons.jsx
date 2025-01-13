@@ -14,7 +14,7 @@ const Marathons = () => {
       <Loding></Loding>;
     }
     if (user) {
-      axios.get("http://localhost:3000/data").then(async (res) => {
+      axios.get("https://y-jade-phi-87.vercel.app/data").then(async (res) => {
         const marathonData = await res.data;
         setData([...marathonData]);
         setLoding(false);
@@ -39,7 +39,7 @@ const Marathons = () => {
             alt=""
           />
         </div>
-        <div className="mt-8">
+        <div className="mt-8 px-5">
           <h2 className="uppercase text-center text-4xl font-bold">
             all marathons
           </h2>
@@ -54,7 +54,7 @@ const Marathons = () => {
       </div>
       {/* search by km */}
       {/* card for mongodb */}
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10 mb-5">
+      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10 mb-5 px-5">
         {data.map((item, index) => (
           <MarathonCard key={index} item={item}></MarathonCard>
         ))}

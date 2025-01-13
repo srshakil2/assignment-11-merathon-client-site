@@ -16,7 +16,7 @@ const Details = () => {
     }
     if (user) {
       axios
-        .get(`http://localhost:3000/data/${id}`)
+        .get(`https://y-jade-phi-87.vercel.app/data/${id}`)
         .then((res) => {
           setMarathon({ ...res?.data });
           setLoding(false);
