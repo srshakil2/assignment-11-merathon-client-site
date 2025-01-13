@@ -16,7 +16,7 @@ const Login = () => {
   const handelGoogle = () => {
     handelGoogleLogIn().then((res) => {
       const { displayName, email, photoURL } = res.user;
-      console.log(displayName, email, photoURL);
+      // console.log(displayName, email, photoURL);
 
       axios
         .post("https://y-jade-phi-87.vercel.app/user", {
@@ -28,7 +28,9 @@ const Login = () => {
           // console.log(res.data);
           // toast.success("soccessfully create accunt");
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          // console.log(err)
+        });
       navigate("/");
     });
   };

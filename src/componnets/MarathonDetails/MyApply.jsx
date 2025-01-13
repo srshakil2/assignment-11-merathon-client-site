@@ -84,7 +84,9 @@ const MyApply = () => {
         setIsOpen(false);
         setLoopRunning(true);
       })
-      .catch((err) => console.log(err.message));
+      .catch((err) => {
+        // console.log(err.message)
+      });
   };
   const handelDelete = (_id) => {
     Swal.fire({
@@ -107,10 +109,12 @@ const MyApply = () => {
               icon: "success",
             });
           })
-          .catch((err) => console.log(err.massage, "deletvfvsdf"));
+          .catch((err) => {
+            // console.log(err.massage, "deletvfvsdf")
+          });
       }
     });
-    console.log(_id, "this is delete");
+    // console.log(_id, "this is delete");
   };
   // console.log(participentEvent);
   return (

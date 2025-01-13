@@ -21,7 +21,9 @@ const Details = () => {
           setMarathon({ ...res?.data });
           setLoding(false);
         })
-        .catch((err) => console.log(err));
+        .catch((err) => {
+          // console.log(err)
+        });
     }
   }, [user, loding]);
   const {

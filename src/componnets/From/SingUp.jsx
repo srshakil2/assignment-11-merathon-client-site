@@ -46,7 +46,7 @@ const SingUp = () => {
               email,
             })
             .then((res) => {
-              console.log(res.data);
+              // console.log(res.data);
               if (res.data.acknowledged) {
                 Swal.fire({
                   position: "top-end",
