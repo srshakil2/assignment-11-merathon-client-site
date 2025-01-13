@@ -4,7 +4,7 @@
 
 ###
 
-[Awesome README](https://github.com/matiassingers/awesome-readme)
+[https://merathon-client-side.web.app/](https://merathon-client-side.web.app/)
 
 ## Features
 
