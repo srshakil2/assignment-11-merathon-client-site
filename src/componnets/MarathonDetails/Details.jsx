@@ -3,6 +3,7 @@ import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { MyMainContext } from "../../AuthProvider/AuthProvider";
 import Loding from "../Loding/Loding";
+import { Helmet } from "react-helmet";
 
 const Details = () => {
   const { id } = useParams();
@@ -38,6 +39,9 @@ const Details = () => {
 
   return (
     <div className=" mx-auto p-6 bg-white rounded-xl shadow-md space-y-6">
+      <Helmet>
+        <title>Marathon Details</title>
+      </Helmet>
       <h1 className="text-3xl font-bold">{marathon_title}</h1>
       <img
         src={marathon.marathon_image}

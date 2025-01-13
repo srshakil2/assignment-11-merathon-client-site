@@ -8,6 +8,7 @@ import {
   DialogTitle,
 } from "@headlessui/react";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const MyApply = () => {
   const [participentEvent, setParticipentEvent] = useState([]);
@@ -112,6 +113,9 @@ const MyApply = () => {
   // console.log(participentEvent);
   return (
     <div className="overflow-x-auto h-screen mt-10">
+      <Helmet>
+        <title>MyApply</title>
+      </Helmet>
       {/* register user marathon list */}
       <table className="table">
         {/* head */}

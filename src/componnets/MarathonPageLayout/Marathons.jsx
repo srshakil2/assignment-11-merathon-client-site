@@ -3,6 +3,7 @@ import { MyMainContext } from "../../AuthProvider/AuthProvider";
 import axios from "axios";
 import MarathonCard from "./MarathonCard";
 import Loding from "../Loding/Loding";
+import { Helmet } from "react-helmet";
 
 const Marathons = () => {
   const [loding, setLoding] = useState(true);
@@ -23,6 +24,12 @@ const Marathons = () => {
 
   return (
     <div>
+      {/* helmet */}
+      <div>
+        <Helmet>
+          <title>Marathons</title>
+        </Helmet>
+      </div>
       {/* bannaer */}
       <div>
         <div className=" h-[200px] md:h-[300px] lg:h-[400px]">

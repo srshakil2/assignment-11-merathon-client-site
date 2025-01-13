@@ -5,12 +5,16 @@ import { NavLink } from "react-router-dom";
 import MarathonPage from "../MarathonPageLayout/MarathonPage";
 import Fakecard from "../Cards/Fakecard";
 import Homesection from "../Sections/Homesection";
+import { Helmet } from "react-helmet";
 // import { MyMainContext } from "../../AuthProvider/AuthProvider";
 
 const Mainleout = () => {
   // const {user}=useContext(MyMainContext)
   return (
     <div className="">
+      <Helmet>
+        <title>Marathon Home</title>
+      </Helmet>
       <div className=" relative ">
         <div>
           <Homebanner></Homebanner>

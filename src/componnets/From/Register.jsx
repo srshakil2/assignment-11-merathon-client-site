@@ -5,6 +5,7 @@ import { format } from "date-fns";
 import DatePicker from "react-datepicker";
 import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
+import { Helmet } from "react-helmet";
 
 const Register = () => {
   const navigate = useNavigate();
@@ -103,6 +104,9 @@ const Register = () => {
   };
   return (
     <div>
+      <Helmet>
+        <title>Registration Marathon</title>
+      </Helmet>
       <h1 className="text-4xl font-extrabold p-5">Register To,</h1>
       <p className="p-5 font-semibold text-lg">
         Furthermore, he said that the marathon is expected to generate many

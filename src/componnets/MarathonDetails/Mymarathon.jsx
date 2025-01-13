@@ -4,6 +4,7 @@ import axios from "axios";
 import { Dialog, DialogPanel } from "@headlessui/react";
 import Swal from "sweetalert2";
 import Loding from "../Loding/Loding";
+import { Helmet } from "react-helmet";
 
 const Mymarathon = () => {
   // dasiyUI ulternativ
@@ -119,6 +120,9 @@ const Mymarathon = () => {
   // console.log(addMarathon.length);
   return (
     <div className="overflow-x-hidden h-screen mt-10 ">
+      <Helmet>
+        <title>MyMarathon</title>
+      </Helmet>
       {/* register user marathon list */}
       <table className="table">
         {/* head */}

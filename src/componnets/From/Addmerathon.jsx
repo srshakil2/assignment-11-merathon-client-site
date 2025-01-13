@@ -5,6 +5,7 @@ import { FaRunning } from "react-icons/fa";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import { MyMainContext } from "../../AuthProvider/AuthProvider";
+import { Helmet } from "react-helmet";
 
 const Addmerathon = () => {
   const navigate = useNavigate();
@@ -70,6 +71,9 @@ const Addmerathon = () => {
   };
   return (
     <div className="flex justify-center items-center bg-gray-100 py-10">
+      <Helmet>
+        <title>AddMarathon</title>
+      </Helmet>
       <form
         onSubmit={(e) => hamdelAddMarathon(e)}
         className="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full md:w-9/12"
