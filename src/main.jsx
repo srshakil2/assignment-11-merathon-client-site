@@ -17,12 +17,14 @@ import Addmerathon from "./componnets/From/Addmerathon";
 import Mymarathon from "./componnets/MarathonDetails/Mymarathon";
 import Marathons from "./componnets/MarathonPageLayout/Marathons";
 import Privet from "./componnets/Privet/Privet";
+import ErrorPage from "./componnets/ErrorPage";
 
 //
 const router = createBrowserRouter([
   {
     path: "/",
     element: <Home></Home>,
+    errorElement: <ErrorPage></ErrorPage>,
     children: [
       {
         path: "/",
