@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { MyMainContext } from "../AuthProvider/AuthProvider";
+import Privet from "./Privet/Privet";
 
 const Navber = () => {
   const { handelLogOut } = useContext(MyMainContext);
@@ -82,7 +83,7 @@ const Navber = () => {
               to={"/"}
               className={({ isActive }) =>
                 isActive
-                  ? "mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
+                  ? " mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
                   : "mr-5 text-lg font-semibold"
               }
             >
@@ -99,9 +100,11 @@ const Navber = () => {
             >
               <li>Marathons</li>
             </NavLink>
+            {/* gfhfghfghg */}
             {user ? (
               <li>
                 <summary className="text-lg font-semibold">Dashboard</summary>
+
                 <ul className="p-2">
                   <li>
                     <NavLink
@@ -144,13 +147,16 @@ const Navber = () => {
             ) : (
               ""
             )}
+            {/* fddffdgfgd */}
           </ul>
         </div>
-        <img
-          className="w-[80px]"
-          src="https://ouch-cdn2.icons8.com/6rPG6llNvBIj6kNhFQ_4VpdY3MdSAnuyoXXCakCn_tI/rs:fit:368:368/extend:false/wm:1:re:0:0:0.8/wmid:ouch2/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNzg5/L2U4ZTgyYmE2LThj/ZDAtNGUwMi05N2Rl/LTBiZWUxNDg5MjRm/Ny5wbmc.png"
-          alt=""
-        />
+        <NavLink to={"/"}>
+          <img
+            className="w-[80px]"
+            src="https://ouch-cdn2.icons8.com/6rPG6llNvBIj6kNhFQ_4VpdY3MdSAnuyoXXCakCn_tI/rs:fit:368:368/extend:false/wm:1:re:0:0:0.8/wmid:ouch2/czM6Ly9pY29uczgu/b3VjaC1wcm9kLmFz/c2V0cy9wbmcvNzg5/L2U4ZTgyYmE2LThj/ZDAtNGUwMi05N2Rl/LTBiZWUxNDg5MjRm/Ny5wbmc.png"
+            alt=""
+          />
+        </NavLink>
       </div>
       {/* lg navlink */}
       <div className="navbar-center hidden lg:flex">

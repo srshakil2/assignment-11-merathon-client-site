@@ -15,23 +15,11 @@ const Mainleout = () => {
       <Helmet>
         <title>Marathon Home</title>
       </Helmet>
-      <div className=" relative ">
-        <div>
-          <Homebanner></Homebanner>
-        </div>
-        {/* down Marathon Category */}
-        <div className="mr-5 flex items-center gap-2 absolute md:right-10 md:bottom-6 lg:bottom-10 lg:right-10">
-          <p className="text-lg font-bold">Marathon Category</p>
-          <div className="w-10">
-            <button>
-              <img
-                src="https://img.icons8.com/?size=48&id=XZh4vkhZnXtg&format=png"
-                alt=""
-              />
-            </button>
-          </div>
-        </div>
+
+      <div>
+        <Homebanner></Homebanner>
       </div>
+
       {/* animation */}
       <div className="bg-bg bg-repeat-round text-orange-500 w-9/12 p-5 mx-auto mt-10 mb-5 md:grid lg:grid grid-cols-3">
         <div className=" col-span-2">

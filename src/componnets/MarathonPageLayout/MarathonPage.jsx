@@ -7,7 +7,7 @@ const MarathonPage = () => {
 
   useEffect(() => {
     axios
-      .get("https://y-jade-phi-87.vercel.app/sixData")
+      .get("http://localhost:3000/sixData")
       .then((res) => {
         setData(res.data);
       })
