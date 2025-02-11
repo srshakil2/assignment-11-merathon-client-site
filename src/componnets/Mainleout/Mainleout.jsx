@@ -21,36 +21,39 @@ const Mainleout = () => {
       </div>
 
       {/* animation */}
-      <div className="bg-bg bg-repeat-round text-orange-500 w-9/12 p-5 mx-auto mt-10 mb-5 md:grid lg:grid grid-cols-3">
-        <div className=" col-span-2">
-          <p className="text-4xl font-bold">Starts Mileblast Marathon 2025</p>
-          <div>{/* aikhane animation korte hobe */}</div>
-        </div>
-        <div className=" col-span-1 space-y-4">
-          <div className=" flex gap-5 items-center">
-            <div className="w-12">
-              <img
-                className="w-full btn-circle border-2 p-2"
-                src="https://img.icons8.com/?size=32&id=9lEnd3Zchg1S&format=png"
-                alt=""
-              />
-            </div>
-            <p className="text-lg font-semibold">End of March 06, 2025</p>
+      <div className="px-5 mt-14">
+        <div className="bg-bg bg-repeat-round text-orange-500 p-5  md:grid lg:grid grid-cols-3">
+          <div className=" col-span-2">
+            <p className="text-4xl font-bold">Starts Mileblast Marathon 2025</p>
+            <div>{/* aikhane animation korte hobe */}</div>
           </div>
-          <div className=" flex gap-5 items-center">
-            <div className="w-12">
-              <img
-                className="w-full btn-circle border-2 "
-                src="https://img.icons8.com/?size=48&id=HLsVIJtJGbew&format=png"
-                alt=""
-              />
+          <div className=" col-span-1 space-y-4">
+            <div className=" flex gap-5 items-center">
+              <div className="w-12">
+                <img
+                  className="w-full btn-circle border-2 p-2"
+                  src="https://img.icons8.com/?size=32&id=9lEnd3Zchg1S&format=png"
+                  alt=""
+                />
+              </div>
+              <p className="text-lg font-semibold">End of March 06, 2025</p>
             </div>
-            <p className="text-lg font-semibold">Dhaka , Bangladesh</p>
+            <div className=" flex gap-5 items-center">
+              <div className="w-12">
+                <img
+                  className="w-full btn-circle border-2 "
+                  src="https://img.icons8.com/?size=48&id=HLsVIJtJGbew&format=png"
+                  alt=""
+                />
+              </div>
+              <p className="text-lg font-semibold">Dhaka , Bangladesh</p>
+            </div>
           </div>
         </div>
       </div>
       {/* peragrap and btn create now */}
-      <div className="text-center w-10/12 mx-auto mt-10">
+
+      <div className="text-center mt-10 px-5">
         <p className=" font-semibold">Create !</p>
         <h2 className="text-3xl font-bold">Buy Your Early Bird Create Now!</h2>
         <p className="text-lg font-semibold">
@@ -67,17 +70,14 @@ const Mainleout = () => {
       </div>
 
       {/* Marathon page */}
-      <div className="mt-10 p-5">
+      <div className="mt-10 px-5">
         <MarathonPage></MarathonPage>
       </div>
       {/* facke card */}
-      <div className="my-10">
-        <h2 className=" text-5xl font-bold mb-7 ml-4">
-          Upcoming Marathons<span className="text-orange-400">...</span>
-        </h2>
+      <div className="px-5 mt-10">
         <Fakecard></Fakecard>
       </div>
-      <div className=" mb-10">
+      <div className="mb-10 px-5 mt-10">
         <Homesection></Homesection>
       </div>
     </div>

@@ -45,14 +45,14 @@ const Homesection = () => {
           </div>
         </div>
         {/* left */}
-        <div className=" space-y-5 xl:col-span-1 lg:mt-5 md:mt-5">
+        <div className=" space-y-5 xl:col-span-1 xl:mt-0 lg:mt-5 md:mt-5 mt-5">
           {/*  */}
           <div className="bg-bgsc bg-repeat-round p-5 flex gap-5  ">
             <div className="flex items-center justify-center w-full ">
               <img
                 src="https://i.ibb.co.com/Qck02rv/istockphoto-184839421-612x612.jpg"
                 alt=""
-                className=" h-full"
+                className="w-full"
               />
             </div>
             <div>
@@ -81,7 +81,7 @@ const Homesection = () => {
               <img
                 src="https://i.ibb.co.com/Qck02rv/istockphoto-184839421-612x612.jpg"
                 alt=""
-                className=" h-full"
+                className="w-full"
               />
             </div>
             <div>
@@ -110,7 +110,7 @@ const Homesection = () => {
               <img
                 src="https://i.ibb.co.com/Qck02rv/istockphoto-184839421-612x612.jpg"
                 alt=""
-                className=" h-full"
+                className="w-full"
               />
             </div>
             <div>

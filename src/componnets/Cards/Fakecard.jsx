@@ -13,15 +13,18 @@ const Fakecard = () => {
 
   return (
     <div>
-      <h3 className=" text-5xl font-bold ml-4">
+      <h2 className=" text-5xl font-bold mb-4">
+        Upcoming Marathons<span className="text-orange-400">...</span>
+      </h2>
+      <h3 className=" text-5xl font-bold ">
         Join Our <span className=" bg-orange-300 ">Marathon</span> Community.
       </h3>
-      <p className=" font-semibold ml-4">
+      <p className=" font-semibold mt-5">
         Join us for events that motivate, inspire, and build lasting friendships
         on the track and trails.
       </p>
       {/* fake data to card  */}
-      <div className=" grid md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10 bg-violet-50 p-10 rounded-xl ">
+      <div className=" grid md:grid-cols-2 lg:grid-cols-3 gap-5 rounded-xl mt-5">
         {fackData?.map((data) => (
           <CardFack key={data._id} data={data}></CardFack>
         ))}

@@ -16,7 +16,7 @@ const CardFack = ({ data }) => {
   return (
     <div>
       <section>
-        <div className=" rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800 ">
+        <div className=" rounded-lg shadow-lg overflow-hidden bg-white dark:bg-gray-800 transition-transform duration-200 transform hover:scale-105">
           {/* Image Section */}
           <img
             className="w-full h-56 object-cover"

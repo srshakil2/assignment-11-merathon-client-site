@@ -19,7 +19,7 @@ const MarathonPage = () => {
   return (
     <div>
       {/* comming soon */}
-      <section className=" flex items-center justify-center">
+      <section className=" flex items-center justify-center mb-4">
         <div className=" flex items-center gap-5">
           <h5 className=" text-xl font-bold">COMING SOON</h5>
           <div className="flex items-center justify-center w-[70px]">
@@ -31,7 +31,7 @@ const MarathonPage = () => {
         </div>
       </section>
       {/* card DB */}
-      <section className=" grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-10 mt-7">
+      <section className=" grid md:grid-cols-2 lg:grid-cols-3 gap-5">
         {data.map((item) => (
           <MarathonCard key={item._id} item={item}></MarathonCard>
         ))}

@@ -6,7 +6,7 @@ const Homebanner = () => {
     <div className="">
       {/* Banner silder */}
       {/* md:h-[300px] lg:h-[400px] opacity-95 */}
-      <div className="z-10 carousel w-full  md:h-[300px] lg:h-[400px] opacity-95">
+      <div className="z-10 carousel w-full md:h-[300px] lg:h-[400px] opacity-95">
         <div id="slide1" className="carousel-item relative w-full object-fill">
           <img
             src="https://i.ibb.co.com/R7jD6vg/healthy-lifestyle-running-outdoors-23-2151847285.jpg"
