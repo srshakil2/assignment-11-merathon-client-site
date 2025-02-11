@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { MyMainContext } from "../AuthProvider/AuthProvider";
 import Privet from "./Privet/Privet";
+import { IoIosArrowDown } from "react-icons/io";
 
 const Navber = () => {
   const { handelLogOut } = useContext(MyMainContext);
@@ -100,50 +101,42 @@ const Navber = () => {
             >
               <li>Marathons</li>
             </NavLink>
-            {/* gfhfghfghg */}
+            {/* gfhfghfghg ---------- */}
             {user ? (
-              <li>
-                <summary className="text-lg font-semibold">Dashboard</summary>
+              <>
+                <NavLink
+                  to={"/addmarathon"}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
+                      : "mr-5 text-lg font-semibold"
+                  }
+                >
+                  <li>Add Marathon</li>
+                </NavLink>
 
-                <ul className="p-2">
-                  <li>
-                    <NavLink
-                      to={"/addmarathon"}
-                      className={({ isActive }) =>
-                        isActive
-                          ? "mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
-                          : "mr-5 text-lg font-semibold"
-                      }
-                    >
-                      Add Marathon
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      className={({ isActive }) =>
-                        isActive
-                          ? "mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
-                          : "mr-5 text-lg font-semibold"
-                      }
-                      to={"/myMarathon"}
-                    >
-                      My Marathon List
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to={"/marathons/myApply"}
-                      className={({ isActive }) =>
-                        isActive
-                          ? "mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
-                          : "mr-5 text-lg font-semibold"
-                      }
-                    >
-                      My Apply List
-                    </NavLink>
-                  </li>
-                </ul>
-              </li>
+                <NavLink
+                  className={({ isActive }) =>
+                    isActive
+                      ? "mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
+                      : "mr-5 text-lg font-semibold"
+                  }
+                  to={"/myMarathon"}
+                >
+                  <li>My Marathon List</li>
+                </NavLink>
+
+                <NavLink
+                  to={"/marathons/myApply"}
+                  className={({ isActive }) =>
+                    isActive
+                      ? "mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
+                      : "mr-5 text-lg font-semibold"
+                  }
+                >
+                  <li>My Apply List</li>
+                </NavLink>
+              </>
             ) : (
               ""
             )}
@@ -182,50 +175,57 @@ const Navber = () => {
           >
             <li>Marathons</li>
           </NavLink>
+          {/* -------------------------now */}
           {user ? (
-            <li className="text-lg font-semibold">
-              <details>
-                <summary className=" ">Dashboard</summary>
-                <ul className="z-20 p-2 ">
-                  <li>
-                    <NavLink
-                      to={"/addmarathon"}
-                      className={({ isActive }) =>
-                        isActive
-                          ? "mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
-                          : "mr-5 text-lg font-semibold"
-                      }
-                    >
-                      Add Marathon
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      className={({ isActive }) =>
-                        isActive
-                          ? "mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
-                          : "mr-5 text-lg font-semibold"
-                      }
-                      to={"/myMarathon"}
-                    >
-                      My Marathon List
-                    </NavLink>
-                  </li>
-                  <li>
-                    <NavLink
-                      to={"/marathons/myApply"}
-                      className={({ isActive }) =>
-                        isActive
-                          ? "mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
-                          : "mr-5 text-lg font-semibold"
-                      }
-                    >
-                      My Apply List
-                    </NavLink>
-                  </li>
-                </ul>
-              </details>
-            </li>
+            <div className="dropdown dropdown-end">
+              <div tabIndex={0} role="button" className="flex">
+                <div className="mr-5 text-lg font-semibold">Dashboard</div>
+                <span className="flex items-center justify-start -ml-4">
+                  <IoIosArrowDown />
+                </span>
+              </div>
+              <ul
+                tabIndex={0}
+                className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
+              >
+                <li>
+                  <NavLink
+                    to={"/addmarathon"}
+                    className={({ isActive }) =>
+                      isActive
+                        ? "mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
+                        : "mr-5 text-lg font-semibold"
+                    }
+                  >
+                    Add Marathon
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    className={({ isActive }) =>
+                      isActive
+                        ? "mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
+                        : "mr-5 text-lg font-semibold"
+                    }
+                    to={"/myMarathon"}
+                  >
+                    My Marathon List
+                  </NavLink>
+                </li>
+                <li>
+                  <NavLink
+                    to={"/marathons/myApply"}
+                    className={({ isActive }) =>
+                      isActive
+                        ? "mr-5 text-lg font-semibold bg-gray-200 p-1 rounded-lg"
+                        : "mr-5 text-lg font-semibold"
+                    }
+                  >
+                    My Apply List
+                  </NavLink>
+                </li>
+              </ul>
+            </div>
           ) : (
             ""
           )}

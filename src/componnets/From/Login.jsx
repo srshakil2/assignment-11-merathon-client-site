@@ -12,6 +12,8 @@ const Login = () => {
   const navigate = useNavigate();
   const { singinhhandel } = useContext(MyMainContext);
   const { handelGoogleLogIn } = useContext(MyMainContext);
+  const email = "anika11@gmail.com";
+  const pass = "1234aA";
 
   const handelGoogle = () => {
     handelGoogleLogIn().then((res) => {
@@ -81,7 +83,8 @@ const Login = () => {
               <input
                 name="email"
                 type="email"
-                placeholder="email"
+                // placeholder="email"
+                defaultValue={email}
                 className="input input-bordered"
                 required
               />
@@ -93,7 +96,8 @@ const Login = () => {
               <input
                 name="password"
                 type={!passwordShow ? "password" : "text"}
-                placeholder="password"
+                // placeholder="password"
+                defaultValue={pass}
                 className="input input-bordered"
                 required
               />
