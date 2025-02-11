@@ -32,9 +32,9 @@ const Marathons = () => {
       </div>
       {/* bannaer */}
       <div>
-        <div className=" h-[200px] md:h-[300px] lg:h-[400px]">
+        <div className=" md:h-[400px] lg:h-[550px]">
           <img
-            className=" w-full h-full"
+            className=" w-full h-full object-cover"
             src="https://i.ibb.co.com/dmqfnD9/istockphoto-892658004-612x612.jpg"
             alt=""
           />

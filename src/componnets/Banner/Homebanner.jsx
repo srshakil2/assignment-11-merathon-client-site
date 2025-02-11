@@ -6,38 +6,53 @@ const Homebanner = () => {
     <div className="">
       {/* Banner silder */}
       {/* md:h-[300px] lg:h-[400px] opacity-95 */}
-      <div className="z-10 carousel w-full md:h-[300px] lg:h-[400px] opacity-95">
-        <div id="slide1" className="carousel-item relative w-full object-fill">
-          <img
-            src="https://i.ibb.co.com/R7jD6vg/healthy-lifestyle-running-outdoors-23-2151847285.jpg"
-            className="w-full"
-          />
-          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-            <a href="#slide3" className=""></a>
-            <a href="#slide2" className=""></a>
+      <div className="relative">
+        <div className="z-10 carousel w-full md:h-[400px] lg:h-[550px] opacity-95">
+          <div
+            id="slide1"
+            className="carousel-item relative w-full object-fill"
+          >
+            <img
+              src="https://i.ibb.co.com/R7jD6vg/healthy-lifestyle-running-outdoors-23-2151847285.jpg"
+              className="w-full"
+            />
+            <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+              <a href="#slide3" className=""></a>
+              <a href="#slide2" className=""></a>
+            </div>
+          </div>
+          <div
+            id="slide2"
+            className="carousel-item relative w-full object-fill"
+          >
+            <img
+              src="https://i.ibb.co.com/dcrRhKK/healthy-lifestyle-running-outdoors-23-2151847298.jpg"
+              className="w-full"
+            />
+            <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+              <a href="#slide1" className=""></a>
+              <a href="#slide3" className=""></a>
+            </div>
+          </div>
+          <div
+            id="slide3"
+            className="carousel-item relative w-full object-fill"
+          >
+            <img
+              src="https://i.ibb.co.com/fqkg4M5/young-fitness-woman-runner-1150-10577.jpg"
+              className="w-full object-fill"
+            />
+            <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
+              <a href="#slide2" className=""></a>
+              <a href="#slide1" className=""></a>
+            </div>
           </div>
         </div>
-        <div id="slide2" className="carousel-item relative w-full object-fill">
-          <img
-            src="https://i.ibb.co.com/dcrRhKK/healthy-lifestyle-running-outdoors-23-2151847298.jpg"
-            className="w-full"
-          />
-          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-            <a href="#slide1" className=""></a>
-            <a href="#slide3" className=""></a>
-          </div>
-        </div>
-        <div id="slide3" className="carousel-item relative w-full object-fill">
-          <img
-            src="https://i.ibb.co.com/fqkg4M5/young-fitness-woman-runner-1150-10577.jpg"
-            className="w-full object-fill"
-          />
-          <div className="absolute left-5 right-5 top-1/2 flex -translate-y-1/2 transform justify-between">
-            <a href="#slide2" className=""></a>
-            <a href="#slide1" className=""></a>
-          </div>
+        <div className="text-4xl text-gray-400 font-extrabold absolute bottom-5 left-[47%] z-20 ">
+          . . .
         </div>
       </div>
+
       {/* Home text */}
       <div className=" px-5 mt-10 relative">
         <div className="space-y-4">
