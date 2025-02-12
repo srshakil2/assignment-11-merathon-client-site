@@ -8,7 +8,7 @@ import { Helmet } from "react-helmet";
 const Marathons = () => {
   const [loding, setLoding] = useState(true);
   const [data, setData] = useState([]);
-  const { user } = useContext(MyMainContext);
+  const { user, themeColor } = useContext(MyMainContext);
   useEffect(() => {
     if (loding) {
       <Loding></Loding>;
@@ -39,7 +39,11 @@ const Marathons = () => {
             alt=""
           />
         </div>
-        <div className="mt-8 px-5">
+        <div
+          className={
+            themeColor === "light" ? "mt-8 px-5" : "mt-8 px-5 text-white"
+          }
+        >
           <h2 className="uppercase text-center text-4xl font-bold">
             all marathons
           </h2>

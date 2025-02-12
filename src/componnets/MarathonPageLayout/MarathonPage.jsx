@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import MarathonCard from "./MarathonCard";
+import { MyMainContext } from "../../AuthProvider/AuthProvider";
 
 const MarathonPage = () => {
   const [data, setData] = useState([]);
+  const { themeColor } = useContext(MyMainContext);
 
   useEffect(() => {
     axios
@@ -19,7 +21,13 @@ const MarathonPage = () => {
   return (
     <div>
       {/* comming soon */}
-      <section className=" flex items-center justify-center mb-4">
+      <section
+        className={
+          themeColor === "light"
+            ? "flex items-center justify-center mb-4"
+            : "flex items-center justify-center mb-4 text-white"
+        }
+      >
         <div className=" flex items-center gap-5">
           <h5 className=" text-xl font-bold">COMING SOON</h5>
           <div className="flex items-center justify-center w-[70px]">

@@ -9,7 +9,7 @@ import { Helmet } from "react-helmet";
 
 const Addmerathon = () => {
   const navigate = useNavigate();
-  const { user } = useContext(MyMainContext);
+  const { user, themeColor } = useContext(MyMainContext);
   const hamdelAddMarathon = (e) => {
     e.preventDefault();
     const form = e.target;
@@ -70,74 +70,74 @@ const Addmerathon = () => {
       });
   };
   return (
-    <div className="flex justify-center items-center bg-gray-100 py-10">
+    <div className="flex justify-center items-center  py-10">
       <Helmet>
         <title>AddMarathon</title>
       </Helmet>
       <form
         onSubmit={(e) => hamdelAddMarathon(e)}
-        className="bg-white shadow-md rounded px-8 pt-6 pb-8 w-full md:w-9/12"
+        className=" shadow-md rounded px-8 pt-6 pb-8 w-full md:w-9/12"
       >
-        <h2 className="text-2xl font-bold mb-6 text-center uppercase">
+        <h2
+          className={
+            themeColor === "light"
+              ? "text-2xl font-bold mb-6 text-center uppercase"
+              : "text-2xl font-bold mb-6 text-center uppercase text-white"
+          }
+        >
           Add Marathon Form
         </h2>
         {/* email */}
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Email
-          </label>
+          <label className="block text-sm font-bold mb-2">Email</label>
           <input
             value={user?.email}
             type="email"
             name="email"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
         {/*  Marathon Title */}
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Marathon Title
-          </label>
+          <label className="block text-sm font-bold mb-2">Marathon Title</label>
           <input
             type="text"
             name="marathon_title"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
         {/* Marathon Image */}
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
+          <label className="block  text-sm font-bold mb-2">
             Marathon Image
           </label>
           <input
             type="text"
             name="marathon_image"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3  leading-tight focus:outline-none focus:shadow-outline"
           />
         </div>
         {/* Location */}
         <div className="mb-4">
-          <label className="block text-gray-700 text-sm font-bold mb-2">
-            Location
-          </label>
+          <label className="block  text-sm font-bold mb-2">Location</label>
           <input
             type="text"
             name="location"
-            className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
+            className="shadow appearance-none border rounded w-full py-2 px-3 leading-tight focus:outline-none focus:shadow-outline"
             required
           />
         </div>
         {/*  Running Distance */}
         <div className="mb-4 relative">
           <label
-            className="block text-gray-700 text-sm font-bold mb-2"
+            className="block  text-sm font-bold mb-2"
             htmlFor="running_distance"
           >
             Running Distance (in km)
           </label>
-          <div className="flex items-center border rounded shadow appearance-none w-full py-2 px-3 text-gray-700 focus:outline-none focus:shadow-outline">
+          <div className="flex items-center border rounded shadow appearance-none w-full py-2 px-3  focus:outline-none focus:shadow-outline">
             <select
               name="running_distance"
               className="flex-grow focus:outline-none"

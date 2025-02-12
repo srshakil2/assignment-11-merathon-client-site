@@ -13,6 +13,7 @@ export const MyMainContext = createContext();
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loding, setLoding] = useState(true);
+  const [themeColor, setThemeColor] = useState("");
   // const [dataId, setDataId] = useState("");
 
   const singUphandel = (email, password) => {
@@ -69,6 +70,8 @@ const AuthProvider = ({ children }) => {
     singinhhandel,
     handelGoogleLogIn,
     handelLogOut,
+    themeColor,
+    setThemeColor,
   };
   return (
     <MyMainContext.Provider value={data}>{children}</MyMainContext.Provider>

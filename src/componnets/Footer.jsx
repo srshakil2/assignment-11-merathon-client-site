@@ -1,8 +1,16 @@
-import React from "react";
+import React, { useContext } from "react";
+import { MyMainContext } from "../AuthProvider/AuthProvider";
 
 const Footer = () => {
+  const { themeColor } = useContext(MyMainContext);
   return (
-    <footer className="footer footer-center bg-orange-300  p-10 opacity-70 ">
+    <footer
+      className={
+        themeColor === "light"
+          ? "footer footer-center bg-orange-300  p-10 opacity-70 "
+          : "footer footer-center bg-orange-300  p-10 opacity-70 text-white"
+      }
+    >
       <aside>
         <div className="flex items-center justify-center mb-5">
           <img

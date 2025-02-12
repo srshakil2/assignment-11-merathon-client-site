@@ -6,10 +6,12 @@ import MarathonPage from "../MarathonPageLayout/MarathonPage";
 import Fakecard from "../Cards/Fakecard";
 import Homesection from "../Sections/Homesection";
 import { Helmet } from "react-helmet";
+import { MyMainContext } from "../../AuthProvider/AuthProvider";
+import { useContext } from "react";
 // import { MyMainContext } from "../../AuthProvider/AuthProvider";
 
 const Mainleout = () => {
-  // const {user}=useContext(MyMainContext)
+  const { themeColor } = useContext(MyMainContext);
   return (
     <div className="">
       <Helmet>
@@ -53,7 +55,13 @@ const Mainleout = () => {
       </div>
       {/* peragrap and btn create now */}
 
-      <div className="text-center mt-10 px-5">
+      <div
+        className={
+          themeColor === "light"
+            ? "text-center mt-10 px-5"
+            : " text-white text-center mt-10 px-5"
+        }
+      >
         <p className=" font-semibold">Create !</p>
         <h2 className="text-3xl font-bold">Buy Your Early Bird Create Now!</h2>
         <p className="text-lg font-semibold">
@@ -63,7 +71,14 @@ const Mainleout = () => {
         </p>
         {/* btn Create now */}
         <div className="mt-5">
-          <NavLink to={"/addmarathon"} className="btn bg-orange-400 uppercase">
+          <NavLink
+            to={"/addmarathon"}
+            className={
+              themeColor === "light"
+                ? "btn bg-orange-400 uppercase"
+                : "btn text-white bg-orange-400 uppercase"
+            }
+          >
             Add marathons
           </NavLink>
         </div>

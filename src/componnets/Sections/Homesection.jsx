@@ -1,9 +1,11 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { MyMainContext } from "../../AuthProvider/AuthProvider";
 
 const Homesection = () => {
+  const { themeColor } = useContext(MyMainContext);
   return (
-    <div>
+    <div className={themeColor === "light" ? "" : "text-white"}>
       <div className=" text-center space-y-5 mb-10">
         <p className="text-lg font-semibold uppercase">Explore Category</p>
         <h3 className=" uppercase text-5xl font-bold">
@@ -36,7 +38,11 @@ const Homesection = () => {
               <div>
                 <NavLink
                   to={"/addmarathon"}
-                  className="btn bg-orange-400 uppercase"
+                  className={
+                    themeColor === "light"
+                      ? "btn bg-orange-400 uppercase"
+                      : "btn text-white bg-orange-400 uppercase"
+                  }
                 >
                   Add marathons !
                 </NavLink>
@@ -67,7 +73,11 @@ const Homesection = () => {
                 <div>
                   <NavLink
                     to={"/addmarathon"}
-                    className="btn bg-orange-400 uppercase"
+                    className={
+                      themeColor === "light"
+                        ? "btn bg-orange-400 uppercase"
+                        : "btn bg-orange-400 uppercase text-white"
+                    }
                   >
                     Add marathons !
                   </NavLink>
@@ -96,7 +106,11 @@ const Homesection = () => {
                 <div>
                   <NavLink
                     to={"/addmarathon"}
-                    className="btn bg-orange-400 uppercase"
+                    className={
+                      themeColor === "light"
+                        ? "btn bg-orange-400 uppercase"
+                        : "btn bg-orange-400 uppercase text-white"
+                    }
                   >
                     Add marathons !
                   </NavLink>
@@ -125,7 +139,11 @@ const Homesection = () => {
                 <div>
                   <NavLink
                     to={"/addmarathon"}
-                    className="btn bg-orange-400 uppercase"
+                    className={
+                      themeColor === "light"
+                        ? "btn bg-orange-400 uppercase"
+                        : "btn bg-orange-400 uppercase text-white"
+                    }
                   >
                     Add marathons !
                   </NavLink>

@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
+import { MyMainContext } from "../../AuthProvider/AuthProvider";
 
 const Homebanner = () => {
+  const { themeColor } = useContext(MyMainContext);
+
   return (
     <div className="">
       {/* Banner silder */}
@@ -54,7 +57,13 @@ const Homebanner = () => {
       </div>
 
       {/* Home text */}
-      <div className=" px-5 mt-10 relative">
+      <div
+        className={
+          themeColor === "light"
+            ? "px-5 mt-10 relative"
+            : "px-5 mt-10 text-white relative"
+        }
+      >
         <div className="space-y-4">
           <h5 className="text-lg font-bold">Mileblast Marathon 2025</h5>
           <h1 className=" text-3xl md:text-4xl lg:text-6xl font-bold space-y-5">
@@ -73,7 +82,11 @@ const Homebanner = () => {
           <div>
             <NavLink
               to={"/addmarathon"}
-              className="btn bg-orange-400 text-xl uppercase"
+              className={
+                themeColor === "light"
+                  ? "btn bg-orange-400 text-xl uppercase"
+                  : "btn text-white bg-orange-400 text-xl uppercase"
+              }
             >
               Add marathons !
             </NavLink>

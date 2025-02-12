@@ -1,7 +1,9 @@
 import React, { useContext, useEffect, useState } from "react";
 import CardFack from "./CardFack";
+import { MyMainContext } from "../../AuthProvider/AuthProvider";
 
 const Fakecard = () => {
+  const { themeColor } = useContext(MyMainContext);
   const [fackData, setFackData] = useState([]);
   useEffect(() => {
     fetch("/data.json")
@@ -13,13 +15,31 @@ const Fakecard = () => {
 
   return (
     <div>
-      <h2 className=" text-5xl font-bold mb-4">
+      <h2
+        className={
+          themeColor === "light"
+            ? " text-5xl font-bold mb-4"
+            : " text-5xl font-bold mb-4 text-white"
+        }
+      >
         Upcoming Marathons<span className="text-orange-400">...</span>
       </h2>
-      <h3 className=" text-5xl font-bold ">
+      <h3
+        className={
+          themeColor === "light"
+            ? "text-5xl font-bold"
+            : "text-5xl font-bold text-white"
+        }
+      >
         Join Our <span className=" bg-orange-300 ">Marathon</span> Community.
       </h3>
-      <p className=" font-semibold mt-5">
+      <p
+        className={
+          themeColor === "light"
+            ? " font-semibold mt-5"
+            : " font-semibold mt-5 text-white"
+        }
+      >
         Join us for events that motivate, inspire, and build lasting friendships
         on the track and trails.
       </p>
