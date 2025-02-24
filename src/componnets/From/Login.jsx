@@ -21,7 +21,7 @@ const Login = () => {
       // console.log(displayName, email, photoURL);
 
       axios
-        .post("https://y-jade-phi-87.vercel.app/user", {
+        .post("http://localhost:3000/user", {
           name: displayName,
           photoUrl: photoURL,
           email: email,

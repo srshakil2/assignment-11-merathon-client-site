@@ -40,7 +40,7 @@ const SingUp = () => {
           photoURL: photoUrl,
         }).then(() => {
           axios
-            .post("https://y-jade-phi-87.vercel.app/user", {
+            .post("http://localhost:3000/user", {
               name,
               photoUrl,
               email,

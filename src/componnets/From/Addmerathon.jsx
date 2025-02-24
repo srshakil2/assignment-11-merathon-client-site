@@ -41,7 +41,7 @@ const Addmerathon = () => {
     //   email,
     // });
     axios
-      .post("https://y-jade-phi-87.vercel.app/data", {
+      .post("http://localhost:3000/data", {
         marathon_title,
         start_registration_date,
         end_registration_date,
