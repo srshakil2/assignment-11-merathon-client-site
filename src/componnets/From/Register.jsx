@@ -15,7 +15,7 @@ const Register = () => {
   const { id } = useParams();
   useEffect(() => {
     axios
-      .get(`http://localhost:3000/data/${id}`)
+      .get(`https://y-jade-phi-87.vercel.app/data/${id}`)
       .then((res) => {
         setData(res?.data);
       })
@@ -63,7 +63,7 @@ const Register = () => {
 
     if (!data?.register_email || user?.email !== data?.register_email) {
       axios
-        .post("http://localhost:3000/participer", {
+        .post("https://y-jade-phi-87.vercel.app/participer", {
           email,
           marathon_titel,
           firstName,
@@ -75,7 +75,7 @@ const Register = () => {
         .then((res) => {
           // update tha total count
           axios
-            .post(`http://localhost:3000/data/${_id}`, {
+            .post(`https://y-jade-phi-87.vercel.app/data/${_id}`, {
               email,
               _id,
             })

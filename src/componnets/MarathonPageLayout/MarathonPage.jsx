@@ -15,7 +15,7 @@ const MarathonPage = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/sixData")
+      .get("https://y-jade-phi-87.vercel.app/sixData")
       .then((res) => {
         if (sortValu === "Ascending") {
           const assnding = res.data.sort((a, b) => {

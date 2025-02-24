@@ -24,7 +24,7 @@ const MyApply = () => {
   useEffect(() => {
     if (email) {
       axios
-        .get(`http://localhost:3000/participer/${user?.email}`)
+        .get(`https://y-jade-phi-87.vercel.app/participer/${user?.email}`)
         .then((res) => {
           setParticipentEvent(res.data);
           if (loopRunning) {
@@ -39,7 +39,7 @@ const MyApply = () => {
 
   const handelUpdateData = (id) => {
     axios
-      .get(`http://localhost:3000/participer/singeldata/${id}`, {
+      .get(`https://y-jade-phi-87.vercel.app/participer/singeldata/${id}`, {
         id,
       })
       .then((res) => {
@@ -65,7 +65,7 @@ const MyApply = () => {
 
     //
     axios
-      .post(`http://localhost:3000/participer/${_id}`, {
+      .post(`https://y-jade-phi-87.vercel.app/participer/${_id}`, {
         id: _id,
         firstName: firstName,
         lastName: lastName,
@@ -101,7 +101,7 @@ const MyApply = () => {
       // console.log(result.isConfirmed);
       if (result.isConfirmed) {
         axios
-          .delete(`http://localhost:3000/participer/${_id}`, { _id })
+          .delete(`https://y-jade-phi-87.vercel.app/participer/${_id}`, { _id })
           .then((res) => {
             Swal.fire({
               title: "Deleted!",

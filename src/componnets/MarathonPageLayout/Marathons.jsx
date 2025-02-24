@@ -14,7 +14,7 @@ const Marathons = () => {
       <Loding></Loding>;
     }
     if (user) {
-      axios.get("http://localhost:3000/data").then(async (res) => {
+      axios.get("https://y-jade-phi-87.vercel.app/data").then(async (res) => {
         const marathonData = await res.data;
         setData([...marathonData]);
         setLoding(false);
